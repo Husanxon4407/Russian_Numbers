@@ -673,56 +673,270 @@
             color: #f87171 !important;
         }
 
-        /* REFERENCE CHART TABLE */
-        .chart-table {
-            width: 100%;
-            border-collapse: separate;
-            border-spacing: 0 8px;
-            margin-top: 1rem;
+        /* GRAMMAR SHEET */
+        .grammar-list {
+            display: grid;
+            gap: 1.5rem;
+            max-width: 860px;
+            margin: 0 auto;
         }
 
-        .chart-table th {
-            padding: 12px 18px;
-            text-align: left;
+        .grammar-card {
+            padding: 1.75rem 2rem;
+        }
+
+        .grammar-head {
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+            margin-bottom: 1.25rem;
+        }
+
+        .grammar-num {
+            flex-shrink: 0;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            color: #fff;
+            background: linear-gradient(135deg, var(--primary-glow), var(--secondary-glow));
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+        }
+
+        .grammar-head h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 4px;
+        }
+
+        .grammar-head p,
+        .grammar-rule {
             color: var(--text-muted);
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            border-bottom: 1px solid var(--glass-border);
+            font-size: 0.95rem;
+            line-height: 1.55;
         }
 
-        .chart-table td {
-            background: rgba(255, 255, 255, 0.03);
-            padding: 14px 18px;
-            font-size: 1rem;
+        .grammar-head b,
+        .grammar-rule b,
+        .grammar-tips b {
             color: var(--text-main);
         }
 
-        .chart-table tr td:first-child {
-            border-top-left-radius: var(--radius-md);
-            border-bottom-left-radius: var(--radius-md);
-            font-weight: 700;
-            color: var(--accent-cyan);
-            width: 15%;
+        .grammar-rule {
+            margin-bottom: 1rem;
         }
 
-        .chart-table tr td:last-child {
-            border-top-right-radius: var(--radius-md);
-            border-bottom-right-radius: var(--radius-md);
+        .pill-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 1rem;
         }
 
-        .chart-table tr:hover td {
-            background: rgba(255, 255, 255, 0.08);
-        }
-
-        .chart-cyrillic {
-            font-weight: 700;
+        .chip.active,
+        .chip.active:hover {
             color: #fff;
+            border-color: transparent;
+            background: linear-gradient(135deg, var(--primary-glow), var(--secondary-glow));
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
         }
 
-        .chart-phonetic {
+        .word-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(175px, 1fr));
+            gap: 10px;
+        }
+
+        /* A Russian word you can tap to hear */
+        .word-tile {
+            position: relative;
+            text-align: left;
+            cursor: pointer;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--glass-border);
+            padding: 12px 14px;
+            border-radius: var(--radius-md);
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            color: inherit;
+            transition: var(--transition-smooth);
+        }
+
+        .word-tile:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(99, 102, 241, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .word-tile::after {
+            content: '\f028';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            opacity: 0.7;
+        }
+
+        .tile-label {
+            font-size: 0.8rem;
+            color: var(--accent-cyan);
+            font-weight: 700;
+        }
+
+        .tile-cyr {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-main);
+            overflow-wrap: break-word;
+        }
+
+        .tile-sub {
+            font-size: 0.8rem;
             color: var(--text-muted);
             font-style: italic;
+        }
+
+        .counter-controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .counter-input {
+            width: 130px;
+            padding: 10px 16px;
+            background: rgba(15, 22, 41, 0.8);
+            border: 2px solid var(--glass-border);
+            border-radius: 30px;
+            color: var(--text-main);
+            font-size: 1.05rem;
+            font-weight: 700;
+            text-align: center;
+            outline: none;
+            transition: var(--transition-smooth);
+        }
+
+        .counter-input:focus {
+            border-color: var(--secondary-glow);
+        }
+
+        .counter-result {
+            display: block;
+            width: 100%;
+            text-align: center;
+            cursor: pointer;
+            padding: 1.25rem;
+            margin-bottom: 1rem;
+            border-radius: var(--radius-md);
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.15), rgba(168, 85, 247, 0.15));
+            border: 1px solid rgba(168, 85, 247, 0.35);
+            color: inherit;
+            transition: var(--transition-smooth);
+        }
+
+        .counter-result:hover {
+            transform: translateY(-2px);
+        }
+
+        .counter-phrase {
+            display: block;
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.7rem;
+            font-weight: 800;
+            line-height: 1.25;
+            color: var(--text-main);
+            overflow-wrap: anywhere;
+        }
+
+        .counter-phrase mark {
+            background: none;
+            color: var(--accent-cyan);
+        }
+
+        .counter-gloss {
+            display: block;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-top: 4px;
+        }
+
+        .counter-sentence {
+            display: block;
+            color: var(--accent-pink);
+            font-style: italic;
+            margin-top: 6px;
+        }
+
+        .rule-rows {
+            display: grid;
+            gap: 8px;
+        }
+
+        .rule-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 14px;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--glass-border);
+            background: rgba(255, 255, 255, 0.03);
+            color: var(--text-muted);
+            font-size: 0.92rem;
+            transition: var(--transition-smooth);
+        }
+
+        .rule-row.active {
+            border-color: var(--accent-cyan);
+            background: rgba(6, 182, 212, 0.12);
+            color: var(--text-main);
+        }
+
+        .rule-form {
+            font-weight: 700;
+            color: var(--text-main);
+            white-space: nowrap;
+        }
+
+        .grammar-tips {
+            list-style: none;
+            display: grid;
+            gap: 12px;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.55;
+        }
+
+        .grammar-tips li {
+            display: flex;
+            gap: 12px;
+        }
+
+        .grammar-tips li > i {
+            color: var(--accent-cyan);
+            margin-top: 4px;
+        }
+
+        .say {
+            cursor: pointer;
+            font-weight: 700;
+            color: var(--text-main);
+            border: none;
+            background: none;
+            border-bottom: 1px dashed var(--accent-cyan);
+            padding: 0;
         }
 
         /* Responsive Design */
@@ -822,11 +1036,88 @@
             overflow-wrap: anywhere;
         }
 
-        /* Phonetic shown under the Cyrillic word on narrow screens */
-        .chart-phonetic-inline {
-            display: none;
-            font-weight: 400;
-            font-size: 0.85rem;
+        /* Lookup tab fits on one screen: tighter spacing, breakdown beside the result */
+        header {
+            padding-top: 0.85rem;
+            padding-bottom: 0.85rem;
+        }
+
+        main {
+            margin: 1.5rem auto 2rem;
+        }
+
+        #lookup-view .section-header {
+            margin-bottom: 1.1rem;
+        }
+
+        #lookup-view .section-header h1 {
+            font-size: 2rem;
+            margin-bottom: 0.25rem;
+        }
+
+        #lookup-view .search-container {
+            margin-bottom: 0.9rem;
+        }
+
+        #lookup-view .search-input {
+            padding-top: 13px;
+            padding-bottom: 13px;
+        }
+
+        #lookup-view .quick-chips {
+            margin-bottom: 1.25rem;
+        }
+
+        .result-card {
+            padding: 1.75rem 2rem;
+        }
+
+        .number-badge {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .cyrillic-output {
+            font-size: 2.6rem;
+            line-height: 1.15;
+        }
+
+        .cyrillic-output.is-long {
+            font-size: 1.7rem;
+        }
+
+        .phonetics-output {
+            margin-bottom: 0;
+        }
+
+        .audio-action-bar {
+            margin: 1.25rem 0 0;
+        }
+
+        .breakdown-section {
+            margin-top: 1.5rem;
+            padding-top: 1.25rem;
+        }
+
+        @media (min-width: 900px) {
+            .result-card {
+                display: grid;
+                grid-template-columns: 1.15fr 1fr;
+                gap: 2rem;
+                align-items: center;
+            }
+
+            .breakdown-section {
+                margin-top: 0;
+                padding-top: 0;
+                border-top: none;
+                border-left: 1px solid var(--glass-border);
+                padding-left: 2rem;
+            }
+
+            .breakdown-grid {
+                grid-template-columns: 1fr 1fr;
+            }
         }
 
         .toast {
@@ -962,19 +1253,30 @@
                 flex-basis: 100%;
             }
 
-            .chart-table th,
-            .chart-table td {
-                padding: 10px 8px;
+            .grammar-card {
+                padding: 1.25rem;
             }
 
-            .chart-table th.chart-phonetic,
-            .chart-table td.chart-phonetic,
-            .chart-table .chart-play-label {
-                display: none;
+            .grammar-head h2 {
+                font-size: 1.2rem;
             }
 
-            .chart-phonetic-inline {
-                display: block;
+            .word-grid {
+                grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            }
+
+            .tile-cyr {
+                font-size: 1rem;
+            }
+
+            .counter-phrase {
+                font-size: 1.35rem;
+            }
+
+            .rule-row {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 2px;
             }
         }
 
@@ -985,126 +1287,178 @@
             }
         }
 
-        /* ===== LIGHT MODE ===== */
+        /* ===== LIGHT MODE: Gzhel porcelain (white, cobalt blue, a touch of gold) ===== */
         [data-theme="light"] {
             color-scheme: light;
-            --bg-dark: #eef1fb;
-            --glass-bg: rgba(15, 23, 42, 0.04);
-            --glass-border: rgba(15, 23, 42, 0.13);
-            --glass-card: rgba(255, 255, 255, 0.72);
-            --glass-card-hover: rgba(255, 255, 255, 0.9);
-            --accent-cyan: #0e7490;
-            --accent-pink: #be185d;
-            --text-main: #0f172a;
-            --text-muted: #55627a;
+            --bg-dark: #f4f7fd;
+            --primary-glow: #1d3fbf;
+            --secondary-glow: #3b82f6;
+            --accent-cyan: #1d3fbf;
+            --accent-pink: #a16207;
+            --glass-bg: rgba(11, 31, 77, 0.04);
+            --glass-border: rgba(29, 63, 191, 0.18);
+            --glass-card: rgba(255, 255, 255, 0.8);
+            --glass-card-hover: rgba(255, 255, 255, 0.95);
+            --text-main: #0b1f4d;
+            --text-muted: #566489;
         }
 
         :root {
             color-scheme: dark;
         }
 
+        [data-theme="light"] body {
+            background-image:
+                radial-gradient(circle at 12% 8%, rgba(29, 63, 191, 0.12), transparent 42%),
+                radial-gradient(circle at 88% 92%, rgba(202, 138, 4, 0.12), transparent 42%);
+            background-attachment: fixed;
+        }
+
         @keyframes pulse-orb-light {
-            0% { transform: scale(1) translate(0, 0); opacity: 0.16; }
-            100% { transform: scale(1.2) translate(30px, -20px); opacity: 0.3; }
+            0% { transform: scale(1) translate(0, 0); opacity: 0.14; }
+            100% { transform: scale(1.2) translate(30px, -20px); opacity: 0.26; }
         }
 
         [data-theme="light"] .glow-orb {
             animation-name: pulse-orb-light;
-            opacity: 0.2;
+            opacity: 0.18;
+        }
+
+        [data-theme="light"] .orb-3 {
+            background: radial-gradient(circle, #e0a83a, transparent 70%);
         }
 
         [data-theme="light"] header {
-            background: rgba(255, 255, 255, 0.72);
+            background: rgba(255, 255, 255, 0.78);
         }
 
         [data-theme="light"] .logo {
-            background: linear-gradient(135deg, #1e1b4b 0%, #9333ea 50%, #0891b2 100%);
+            background: linear-gradient(135deg, #0b1f4d 0%, #1d3fbf 55%, #ca8a04 100%);
             -webkit-background-clip: text;
+        }
+
+        [data-theme="light"] .logo i {
+            filter: drop-shadow(0 0 8px rgba(29, 63, 191, 0.35));
         }
 
         [data-theme="light"] .nav-links,
         [data-theme="light"] .icon-btn:not(.active),
-        [data-theme="light"] .chip,
+        [data-theme="light"] .chip:not(.active),
         [data-theme="light"] .speed-control {
-            background: rgba(15, 23, 42, 0.05);
+            background: rgba(29, 63, 191, 0.06);
         }
 
         [data-theme="light"] .nav-btn:hover:not(.active),
         [data-theme="light"] .icon-btn:hover:not(.active),
-        [data-theme="light"] .chip:hover {
-            background: rgba(15, 23, 42, 0.1);
+        [data-theme="light"] .chip:hover:not(.active) {
+            background: rgba(29, 63, 191, 0.13);
             color: var(--text-main);
         }
 
+        [data-theme="light"] .nav-btn.active,
+        [data-theme="light"] .icon-btn.active,
+        [data-theme="light"] .chip.active,
+        [data-theme="light"] .grammar-num {
+            box-shadow: 0 4px 15px rgba(29, 63, 191, 0.35);
+        }
+
         [data-theme="light"] .glass-panel {
-            box-shadow: 0 20px 50px rgba(49, 46, 129, 0.12),
-                        inset 0 1px 0 rgba(255, 255, 255, 0.7);
+            box-shadow: 0 20px 50px rgba(11, 31, 77, 0.1),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.8);
         }
 
         [data-theme="light"] .section-header h1 {
-            background: linear-gradient(135deg, #0f172a 30%, #55627a);
+            background: linear-gradient(135deg, #0b1f4d 30%, #1d3fbf);
             -webkit-background-clip: text;
         }
 
         [data-theme="light"] .search-input,
+        [data-theme="light"] .counter-input,
         [data-theme="light"] .category-select {
-            background: rgba(255, 255, 255, 0.92);
+            background: rgba(255, 255, 255, 0.95);
             color: var(--text-main);
-            box-shadow: 0 4px 20px rgba(49, 46, 129, 0.08);
+            box-shadow: 0 4px 20px rgba(11, 31, 77, 0.07);
+        }
+
+        [data-theme="light"] .search-input:focus {
+            box-shadow: 0 0 25px rgba(59, 130, 246, 0.3);
         }
 
         [data-theme="light"] .result-card {
-            background: linear-gradient(145deg, rgba(255, 255, 255, 0.92), rgba(236, 239, 252, 0.92));
-            box-shadow: 0 15px 35px rgba(49, 46, 129, 0.12);
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.95), rgba(233, 240, 255, 0.95));
+            box-shadow: 0 15px 35px rgba(11, 31, 77, 0.12);
+        }
+
+        [data-theme="light"] .number-badge,
+        [data-theme="light"] .counter-result {
+            background: linear-gradient(135deg, rgba(29, 63, 191, 0.08), rgba(59, 130, 246, 0.12));
+            border-color: rgba(29, 63, 191, 0.3);
         }
 
         [data-theme="light"] .cyrillic-output {
-            background: linear-gradient(135deg, #0f172a 0%, #334155 100%);
+            background: linear-gradient(135deg, #0b1f4d 0%, #1d3fbf 100%);
             -webkit-background-clip: text;
         }
 
-        [data-theme="light"] .speed-btn.active {
-            background: rgba(14, 116, 144, 0.15);
+        [data-theme="light"] .phonetics-output {
+            color: var(--accent-pink);
+        }
+
+        [data-theme="light"] .play-btn {
+            box-shadow: 0 10px 25px rgba(29, 63, 191, 0.35);
+        }
+
+        [data-theme="light"] .speed-btn.active,
+        [data-theme="light"] .rule-row.active {
+            background: rgba(29, 63, 191, 0.12);
         }
 
         [data-theme="light"] .breakdown-item,
-        [data-theme="light"] .chart-table td {
-            background: rgba(15, 23, 42, 0.035);
+        [data-theme="light"] .word-tile,
+        [data-theme="light"] .rule-row:not(.active) {
+            background: rgba(255, 255, 255, 0.7);
         }
 
         [data-theme="light"] .breakdown-item:hover,
-        [data-theme="light"] .chart-table tr:hover td {
-            background: rgba(15, 23, 42, 0.075);
+        [data-theme="light"] .word-tile:hover {
+            background: #ffffff;
+            border-color: rgba(29, 63, 191, 0.45);
         }
 
         [data-theme="light"] .breakdown-cyr,
-        [data-theme="light"] .card-cyrillic-large,
-        [data-theme="light"] .quiz-target,
-        [data-theme="light"] .chart-cyrillic {
+        [data-theme="light"] .quiz-target {
             color: var(--text-main);
         }
 
+        /* Flashcard keeps its original dark look in light mode */
+        [data-theme="light"] .flashcard-container {
+            --accent-cyan: #06b6d4;
+            --accent-pink: #ec4899;
+            --text-muted: #94a3b8;
+            --glass-border: rgba(255, 255, 255, 0.12);
+        }
+
         [data-theme="light"] .card-face {
-            box-shadow: 0 15px 35px rgba(49, 46, 129, 0.16);
+            box-shadow: 0 15px 35px rgba(11, 31, 77, 0.3);
         }
 
         [data-theme="light"] .card-front {
-            background: linear-gradient(145deg, #ffffff, #e9edfb);
+            background: linear-gradient(145deg, #172036, #0e1628);
         }
 
         [data-theme="light"] .card-back {
-            background: linear-gradient(145deg, #e3e5ff, #f1e4ff);
+            background: linear-gradient(145deg, #1f224b, #301e4d);
         }
 
         [data-theme="light"] .action-btn,
         [data-theme="light"] .option-btn {
-            background: rgba(15, 23, 42, 0.05);
+            background: rgba(29, 63, 191, 0.06);
             color: var(--text-main);
         }
 
         [data-theme="light"] .action-btn:hover:not(:disabled),
         [data-theme="light"] .option-btn:hover:not(:disabled) {
-            background: rgba(15, 23, 42, 0.1);
+            background: rgba(29, 63, 191, 0.13);
         }
 
         [data-theme="light"] .option-btn.correct {
@@ -1150,8 +1504,8 @@
             <button class="nav-btn" data-tab="quiz" onclick="switchTab('quiz')">
                 <i class="fa-solid fa-gamepad"></i> Quiz Mode
             </button>
-            <button class="nav-btn" data-tab="chart" onclick="switchTab('chart')">
-                <i class="fa-solid fa-table"></i> Reference Chart
+            <button class="nav-btn" data-tab="grammar" onclick="switchTab('grammar')">
+                <i class="fa-solid fa-book-open"></i> Grammar Sheet
             </button>
         </nav>
         <div class="header-controls">
@@ -1189,6 +1543,7 @@
             </div>
 
             <div class="glass-panel result-card">
+                <div class="result-main">
                 <div class="number-badge" id="res-badge">—</div>
                 <div class="cyrillic-output" id="res-cyrillic">Введите число</div>
                 <div class="phonetics-output" id="res-phonetic">Type a number above to begin</div>
@@ -1203,6 +1558,7 @@
                         <button class="speed-btn" onclick="setSpeechSpeed(0.7, this)">0.7x</button>
                         <button class="speed-btn" onclick="setSpeechSpeed(0.5, this)">0.5x</button>
                     </div>
+                </div>
                 </div>
 
                 <div class="breakdown-section">
@@ -1286,27 +1642,132 @@
             </div>
         </section>
 
-        <!-- TAB 4: REFERENCE CHART -->
-        <section id="chart-view" class="section-view">
+        <!-- TAB 4: GRAMMAR SHEET -->
+        <section id="grammar-view" class="section-view">
             <div class="section-header">
-                <h1>Master Reference Guide</h1>
-                <p>Core building blocks of Russian numbers system</p>
+                <h1>Grammar Sheet</h1>
+                <p>How Russian numbers work, one small rule at a time. Tap any Russian word to hear it.</p>
             </div>
 
-            <div class="glass-panel">
-                <table class="chart-table">
-                    <thead>
-                        <tr>
-                            <th>Number</th>
-                            <th>Cyrillic</th>
-                            <th class="chart-phonetic" style="font-style: normal;">Phonetic Transliteration</th>
-                            <th>Audio</th>
-                        </tr>
-                    </thead>
-                    <tbody id="chart-tbody">
-                        <!-- Populated dynamically -->
-                    </tbody>
-                </table>
+            <div class="grammar-list">
+                <!-- 1. Building numbers -->
+                <article class="glass-panel grammar-card">
+                    <div class="grammar-head">
+                        <span class="grammar-num">1</span>
+                        <div>
+                            <h2>How numbers are built</h2>
+                            <p>You only need about 30 words. Pick a group to see its pattern.</p>
+                        </div>
+                    </div>
+                    <div class="pill-row" id="group-pills">
+                        <button type="button" class="chip active" onclick="showGrammarGroup('basic', this)">0 - 10</button>
+                        <button type="button" class="chip" onclick="showGrammarGroup('teens', this)">11 - 19</button>
+                        <button type="button" class="chip" onclick="showGrammarGroup('tens', this)">20 - 90</button>
+                        <button type="button" class="chip" onclick="showGrammarGroup('hundreds', this)">100 - 900</button>
+                        <button type="button" class="chip" onclick="showGrammarGroup('compound', this)">Combined</button>
+                    </div>
+                    <p class="grammar-rule" id="group-rule"></p>
+                    <div class="word-grid" id="group-grid"></div>
+                </article>
+
+                <!-- 2. Gender of one and two -->
+                <article class="glass-panel grammar-card">
+                    <div class="grammar-head">
+                        <span class="grammar-num">2</span>
+                        <div>
+                            <h2>One and two change with gender</h2>
+                            <p><b>1</b> has three forms (один, одна, одно) and <b>2</b> has two (два, две). They match the gender of the thing you count. No other number does this.</p>
+                        </div>
+                    </div>
+                    <div class="pill-row">
+                        <button type="button" class="chip active" onclick="showGender('m', this)">Masculine</button>
+                        <button type="button" class="chip" onclick="showGender('f', this)">Feminine</button>
+                        <button type="button" class="chip" onclick="showGender('n', this)">Neuter</button>
+                    </div>
+                    <div class="word-grid" id="gender-grid"></div>
+                </article>
+
+                <!-- 3. Counting things -->
+                <article class="glass-panel grammar-card">
+                    <div class="grammar-head">
+                        <span class="grammar-num">3</span>
+                        <div>
+                            <h2>Counting things: the 1 / 2-4 / 5+ rule</h2>
+                            <p>The word after a number changes its ending. Only the <b>last digits</b> of the number matter. Change the number and the thing to see the rule work.</p>
+                        </div>
+                    </div>
+                    <div class="counter-controls">
+                        <button type="button" class="icon-btn" onclick="stepCounter(-1)" aria-label="One less"><i class="fa-solid fa-minus"></i></button>
+                        <input type="text" inputmode="numeric" autocomplete="off" maxlength="6" id="counter-input" class="counter-input" aria-label="How many" value="2" oninput="renderCounter()">
+                        <button type="button" class="icon-btn" onclick="stepCounter(1)" aria-label="One more"><i class="fa-solid fa-plus"></i></button>
+                        <button type="button" class="chip" onclick="setCounter(1)">1</button>
+                        <button type="button" class="chip" onclick="setCounter(3)">3</button>
+                        <button type="button" class="chip" onclick="setCounter(5)">5</button>
+                        <button type="button" class="chip" onclick="setCounter(11)">11</button>
+                        <button type="button" class="chip" onclick="setCounter(21)">21</button>
+                        <button type="button" class="chip" onclick="setCounter(22)">22</button>
+                        <button type="button" class="chip" onclick="setCounter(25)">25</button>
+                    </div>
+                    <div class="pill-row" id="noun-pills"></div>
+                    <button type="button" class="counter-result" id="counter-result" title="Tap to hear">
+                        <span class="counter-phrase" id="counter-phrase"></span>
+                        <span class="counter-gloss" id="counter-gloss"></span>
+                        <span class="counter-sentence" id="counter-sentence"></span>
+                    </button>
+                    <div class="rule-rows">
+                        <div class="rule-row" id="rule-row-0"><span>Ends in <b>1</b> (but not 11)</span><span class="rule-form" id="rule-form-0"></span></div>
+                        <div class="rule-row" id="rule-row-1"><span>Ends in <b>2, 3 or 4</b> (but not 12, 13, 14)</span><span class="rule-form" id="rule-form-1"></span></div>
+                        <div class="rule-row" id="rule-row-2"><span><b>Everything else</b>: 0, 5 to 20, 25 to 30...</span><span class="rule-form" id="rule-form-2"></span></div>
+                    </div>
+                </article>
+
+                <!-- 4. Thousands and millions -->
+                <article class="glass-panel grammar-card">
+                    <div class="grammar-head">
+                        <span class="grammar-num">4</span>
+                        <div>
+                            <h2>Thousands and millions</h2>
+                            <p><b>тысяча</b> (thousand) is itself a feminine word, so it follows rule 3 and takes <b>одна</b> / <b>две</b>. <b>миллион</b> is masculine, so it takes <b>один</b> / <b>два</b>.</p>
+                        </div>
+                    </div>
+                    <div class="word-grid" id="thousand-grid"></div>
+                </article>
+
+                <!-- 5. Ordinal numbers -->
+                <article class="glass-panel grammar-card">
+                    <div class="grammar-head">
+                        <span class="grammar-num">5</span>
+                        <div>
+                            <h2>First, second, third...</h2>
+                            <p>Ordinal numbers behave like adjectives: the ending matches the gender of the noun. In a longer number only the <b>last word</b> changes: двадцать <b>первый</b> (21st).</p>
+                        </div>
+                    </div>
+                    <div class="pill-row">
+                        <button type="button" class="chip active" onclick="showOrdinals('m', this)">Masculine</button>
+                        <button type="button" class="chip" onclick="showOrdinals('f', this)">Feminine</button>
+                        <button type="button" class="chip" onclick="showOrdinals('n', this)">Neuter</button>
+                    </div>
+                    <p class="grammar-rule" id="ordinal-example"></p>
+                    <div class="word-grid" id="ordinal-grid"></div>
+                </article>
+
+                <!-- 6. Spelling and sound tips -->
+                <article class="glass-panel grammar-card">
+                    <div class="grammar-head">
+                        <span class="grammar-num">6</span>
+                        <div>
+                            <h2>Spelling and sound tips</h2>
+                            <p>Small things that trip up most learners. Tap the underlined words to hear them.</p>
+                        </div>
+                    </div>
+                    <ul class="grammar-tips">
+                        <li><i class="fa-solid fa-circle-check"></i><span><b>Soft sign at the end</b> for 5 to 20 and 30: <button type="button" class="say" data-speak="пять">пять</button>, <button type="button" class="say" data-speak="десять">десять</button>, <button type="button" class="say" data-speak="двадцать">двадцать</button>, <button type="button" class="say" data-speak="тридцать">тридцать</button>.</span></li>
+                        <li><i class="fa-solid fa-circle-check"></i><span><b>Soft sign in the middle</b> for 50 to 80 and 500 to 900: <button type="button" class="say" data-speak="пятьдесят">пятьдесят</button>, <button type="button" class="say" data-speak="семьдесят">семьдесят</button>, <button type="button" class="say" data-speak="шестьсот">шестьсот</button>. A number never has both.</span></li>
+                        <li><i class="fa-solid fa-circle-check"></i><span><b>No "and"</b> between the parts: 105 is <button type="button" class="say" data-speak="сто пять">сто пять</button>, never "сто и пять".</span></li>
+                        <li><i class="fa-solid fa-circle-check"></i><span><b>Unstressed "о" sounds like "a"</b>: <button type="button" class="say" data-speak="один">один</button> is said "adín" and <button type="button" class="say" data-speak="одиннадцать">одиннадцать</button> is "adínnatsat'".</span></li>
+                        <li><i class="fa-solid fa-circle-check"></i><span><b>Zero has two words</b>: <button type="button" class="say" data-speak="ноль">ноль</button> is the everyday one and <button type="button" class="say" data-speak="нуль">нуль</button> appears in some set phrases.</span></li>
+                    </ul>
+                </article>
             </div>
         </section>
     </main>
@@ -1330,10 +1791,16 @@
             9: { cyr: "девять", phon: "dévyat'" }
         };
 
-        // Feminine forms, used before "тысяча" (одна тысяча, две тысячи)
-        const feminineUnits = {
-            1: { cyr: "одна", phon: "odná" },
-            2: { cyr: "две", phon: "dve" }
+        // 1 and 2 agree with the gender of the counted noun.
+        // Feminine is also used before "тысяча" (одна тысяча, две тысячи)
+        const genderUnits = {
+            f: {
+                1: { cyr: "одна", phon: "odná" },
+                2: { cyr: "две", phon: "dve" }
+            },
+            n: {
+                1: { cyr: "одно", phon: "odnó" }
+            }
         };
 
         const teens = {
@@ -1391,7 +1858,7 @@
         }
 
         // Word parts for 1 to 999
-        function convertBelowThousand(num, feminine) {
+        function convertBelowThousand(num, gender) {
             const parts = [];
             const h = Math.floor(num / 100) * 100;
             const rem = num % 100;
@@ -1406,7 +1873,7 @@
 
                 if (t > 0) parts.push({ val: t, cyr: tens[t].cyr, phon: tens[t].phon });
                 if (u > 0) {
-                    const word = (feminine && feminineUnits[u]) || units[u];
+                    const word = (genderUnits[gender] && genderUnits[gender][u]) || units[u];
                     parts.push({ val: u, cyr: word.cyr, phon: word.phon });
                 }
             }
@@ -1414,7 +1881,8 @@
         }
 
         // Converter Function for Numbers 0 to 999,999
-        function convertToRussian(num) {
+        // gender ('m', 'f' or 'n') is that of the noun being counted, if any
+        function convertToRussian(num, gender) {
             num = parseInt(num);
             if (isNaN(num) || num < 0 || num > 999999) {
                 return {
@@ -1439,7 +1907,7 @@
             // Thousands handling (for larger inputs up to 999,999)
             if (thousands > 0) {
                 // 1000 is just "тысяча"; other counts take feminine один/два
-                let countParts = thousands === 1 ? [] : convertBelowThousand(thousands, true);
+                let countParts = thousands === 1 ? [] : convertBelowThousand(thousands, 'f');
                 let form = thousandForm(thousands);
                 breakdown.push({
                     val: thousands * 1000,
@@ -1448,7 +1916,7 @@
                 });
             }
 
-            breakdown.push(...convertBelowThousand(remainder, false));
+            breakdown.push(...convertBelowThousand(remainder, gender));
 
             return {
                 cyrillic: breakdown.map(p => p.cyr).join(" "),
@@ -1909,32 +2377,178 @@
         }
 
         /* ===================================================
-           REFERENCE CHART POPULATOR
+           GRAMMAR SHEET
            =================================================== */
-        function populateChart() {
-            const tbody = document.getElementById('chart-tbody');
-            tbody.innerHTML = '';
+        const grammarGroups = {
+            basic: {
+                rule: 'Learn these by heart. Every other number is built from them.',
+                nums: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+            },
+            teens: {
+                rule: 'Unit + <b>надцать</b> ("on ten"): один → одиннадцать. Watch the small changes: <b>две</b>надцать, <b>четыр</b>надцать, and the soft sign is dropped (пять → пятнадцать).',
+                nums: [11, 12, 13, 14, 15, 16, 17, 18, 19]
+            },
+            tens: {
+                rule: '20 and 30 end in <b>дцать</b>. 50 to 80 are unit + <b>десят</b>. Two are irregular: <b>сорок</b> (40) and <b>девяносто</b> (90).',
+                nums: [20, 30, 40, 50, 60, 70, 80, 90]
+            },
+            hundreds: {
+                rule: '<b>сто</b>, then двести, триста, четыреста. From 500 it is unit + <b>сот</b>.',
+                nums: [100, 200, 300, 400, 500, 600, 700, 800, 900]
+            },
+            compound: {
+                rule: 'Say the parts from biggest to smallest, with no "and": 154 = сто + пятьдесят + четыре.',
+                nums: [21, 47, 154, 365, 999, 1984]
+            }
+        };
 
-            const list = [0,1,2,3,4,5,6,7,8,9,10,11,12,15,20,30,50,100,154,500,1000];
+        const genderExamples = {
+            m: [['1', 'один стол', 'one table'], ['2', 'два стола', 'two tables'], ['21', 'двадцать один стол', '21 tables']],
+            f: [['1', 'одна книга', 'one book'], ['2', 'две книги', 'two books'], ['21', 'двадцать одна книга', '21 books']],
+            n: [['1', 'одно окно', 'one window'], ['2', 'два окна', 'two windows'], ['21', 'двадцать одно окно', '21 windows']]
+        };
 
-            list.forEach(num => {
-                const res = convertToRussian(num);
-                const tr = document.createElement('tr');
-                tr.innerHTML = `
-                    <td>${num}</td>
-                    <td class="chart-cyrillic">${res.cyrillic}<span class="chart-phonetic chart-phonetic-inline">${res.phonetic}</span></td>
-                    <td class="chart-phonetic">${res.phonetic}</td>
-                    <td>
-                        <button class="action-btn" style="padding: 6px 14px; font-size: 0.8rem;" onclick="speakText('${res.cyrillic}')" aria-label="Play ${num}">
-                            <i class="fa-solid fa-volume-high"></i> <span class="chart-play-label">Play</span>
-                        </button>
-                    </td>
-                `;
-                tbody.appendChild(tr);
+        const ordinalLabels = ['1st', '2nd', '3rd', '4th', '5th', '6th', '7th', '8th', '9th', '10th'];
+        const ordinals = {
+            m: {
+                example: 'Masculine nouns: <b>первый день</b> (the first day).',
+                words: ['первый', 'второй', 'третий', 'четвёртый', 'пятый', 'шестой', 'седьмой', 'восьмой', 'девятый', 'десятый']
+            },
+            f: {
+                example: 'Feminine nouns: <b>первая неделя</b> (the first week).',
+                words: ['первая', 'вторая', 'третья', 'четвёртая', 'пятая', 'шестая', 'седьмая', 'восьмая', 'девятая', 'десятая']
+            },
+            n: {
+                example: 'Neuter nouns: <b>первое слово</b> (the first word).',
+                words: ['первое', 'второе', 'третье', 'четвёртое', 'пятое', 'шестое', 'седьмое', 'восьмое', 'девятое', 'десятое']
+            }
+        };
+
+        // forms: after 1, after 2-4, after 5+
+        const counterNouns = [
+            { label: 'год', g: 'm', forms: ['год', 'года', 'лет'], en: ['year', 'years'], sentence: p => `Мне ${p}.`, sentenceEn: p => `I am ${p} old.` },
+            { label: 'рубль', g: 'm', forms: ['рубль', 'рубля', 'рублей'], en: ['rouble', 'roubles'], sentence: p => `Цена: ${p}.`, sentenceEn: p => `The price is ${p}.` },
+            { label: 'час', g: 'm', forms: ['час', 'часа', 'часов'], en: ['hour', 'hours'] },
+            { label: 'день', g: 'm', forms: ['день', 'дня', 'дней'], en: ['day', 'days'] },
+            { label: 'книга', g: 'f', forms: ['книга', 'книги', 'книг'], en: ['book', 'books'] },
+            { label: 'минута', g: 'f', forms: ['минута', 'минуты', 'минут'], en: ['minute', 'minutes'] },
+            { label: 'окно', g: 'n', forms: ['окно', 'окна', 'окон'], en: ['window', 'windows'] }
+        ];
+        let counterNoun = counterNouns[0];
+
+        function wordTile(label, cyr, sub) {
+            return `
+                <button type="button" class="word-tile" data-speak="${cyr}">
+                    <span class="tile-label">${label}</span>
+                    <span class="tile-cyr">${cyr}</span>
+                    <span class="tile-sub">${sub}</span>
+                </button>
+            `;
+        }
+
+        function numberTile(num) {
+            const res = convertToRussian(num);
+            return wordTile(num, res.cyrillic, res.phonetic);
+        }
+
+        function setActivePill(btn) {
+            if (!btn) return;
+            btn.parentElement.querySelectorAll('.chip').forEach(b => b.classList.toggle('active', b === btn));
+        }
+
+        function showGrammarGroup(key, btn) {
+            setActivePill(btn);
+            document.getElementById('group-rule').innerHTML = grammarGroups[key].rule;
+            document.getElementById('group-grid').innerHTML = grammarGroups[key].nums.map(numberTile).join('');
+        }
+
+        function showGender(gender, btn) {
+            setActivePill(btn);
+            document.getElementById('gender-grid').innerHTML =
+                genderExamples[gender].map(ex => wordTile(ex[0], ex[1], ex[2])).join('');
+        }
+
+        function showOrdinals(gender, btn) {
+            setActivePill(btn);
+            document.getElementById('ordinal-example').innerHTML = ordinals[gender].example;
+            document.getElementById('ordinal-grid').innerHTML =
+                ordinals[gender].words.map((word, i) => wordTile(ordinalLabels[i], word, '')).join('');
+        }
+
+        // Which noun form a number takes: 0 = after 1, 1 = after 2-4, 2 = after 5+
+        function nounFormIndex(num) {
+            const lastDigit = num % 10;
+            const lastTwoDigits = num % 100;
+            if (lastTwoDigits >= 11 && lastTwoDigits <= 14) return 2;
+            if (lastDigit === 1) return 0;
+            if (lastDigit >= 2 && lastDigit <= 4) return 1;
+            return 2;
+        }
+
+        function setCounter(val) {
+            document.getElementById('counter-input').value = val;
+            renderCounter();
+        }
+
+        function stepCounter(delta) {
+            const current = parseInt(document.getElementById('counter-input').value) || 0;
+            setCounter(Math.min(999999, Math.max(0, current + delta)));
+        }
+
+        function setCounterNoun(index, btn) {
+            counterNoun = counterNouns[index];
+            setActivePill(btn);
+            renderCounter();
+        }
+
+        function renderCounter() {
+            const input = document.getElementById('counter-input');
+            const val = input.value.replace(/\D/g, '').slice(0, 6).replace(/^0+(?=\d)/, '');
+            if (input.value !== val) input.value = val;
+
+            const num = val === '' ? 0 : parseInt(val);
+            const formIndex = nounFormIndex(num);
+            const words = convertToRussian(num, counterNoun.g).cyrillic;
+            const phrase = `${words} ${counterNoun.forms[formIndex]}`;
+            const phraseEn = `${num} ${num === 1 ? counterNoun.en[0] : counterNoun.en[1]}`;
+
+            document.getElementById('counter-phrase').innerHTML = `${words} <mark>${counterNoun.forms[formIndex]}</mark>`;
+            document.getElementById('counter-gloss').innerText = phraseEn;
+            document.getElementById('counter-sentence').innerText = counterNoun.sentence
+                ? `${counterNoun.sentence(phrase)}  ${counterNoun.sentenceEn(phraseEn)}`
+                : '';
+            document.getElementById('counter-result').dataset.speak = counterNoun.sentence ? counterNoun.sentence(phrase) : phrase;
+
+            for (let i = 0; i < 3; i++) {
+                document.getElementById(`rule-row-${i}`).classList.toggle('active', i === formIndex);
+                document.getElementById(`rule-form-${i}`).innerText = counterNoun.forms[i];
+            }
+        }
+
+        function initGrammar() {
+            showGrammarGroup('basic');
+            showGender('m');
+            showOrdinals('m');
+
+            document.getElementById('noun-pills').innerHTML = counterNouns.map((noun, i) =>
+                `<button type="button" class="chip${i === 0 ? ' active' : ''}" onclick="setCounterNoun(${i}, this)">${noun.label} (${noun.en[0]})</button>`
+            ).join('');
+            renderCounter();
+
+            document.getElementById('thousand-grid').innerHTML =
+                [1000, 2000, 5000, 21000].map(numberTile).join('') +
+                wordTile('1 000 000', 'миллион', 'millión') +
+                wordTile('2 000 000', 'два миллиона', 'dva millióna') +
+                wordTile('5 000 000', 'пять миллионов', "pyat' milliónov");
+
+            // Anything marked with data-speak is read aloud when tapped
+            document.getElementById('grammar-view').addEventListener('click', e => {
+                const el = e.target.closest('[data-speak]');
+                if (el) speakText(el.dataset.speak);
             });
         }
 
-        /* ===================================================
+/* ===================================================
            CANVAS BACKGROUND ANIMATION
            =================================================== */
         function initCanvas() {
@@ -1975,9 +2589,9 @@
 
                     ctx.beginPath();
                     ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-                    ctx.fillStyle = light ? `rgba(99, 102, 241, ${p.alpha * 0.7})` : `rgba(168, 85, 247, ${p.alpha})`;
+                    ctx.fillStyle = light ? `rgba(29, 63, 191, ${p.alpha * 0.6})` : `rgba(168, 85, 247, ${p.alpha})`;
                     ctx.shadowBlur = light ? 4 : 10;
-                    ctx.shadowColor = '#6366f1';
+                    ctx.shadowColor = light ? '#3b82f6' : '#6366f1';
                     ctx.fill();
                 });
 
@@ -1993,7 +2607,7 @@
             handleSearch(); // Starts empty until a number is typed
             loadCategoryCards();
             generateQuizQuestion();
-            populateChart();
+            initGrammar();
         };
     </script>
 </body>

@@ -9,7 +9,8 @@ A single-page app for learning Russian numbers from 0 to 999,999.
 - **Lookup & Audio** - type a number and get the Cyrillic spelling, a transliteration with stress marks, a part-by-part breakdown and spoken audio at three speeds.
 - **Flashcards** - flip cards for basics, teens, tens and hundreds (arrow keys move between cards).
 - **Quiz** - multiple choice with score and streak.
-- **Reference chart** - the core building blocks with audio.
+- **Grammar sheet** - interactive rules: how numbers are built, gender of one and two, noun endings after numbers, thousands, ordinals and spelling tips.
+- Light and dark themes, and optional soft background music.
 
 ## Running locally
 
