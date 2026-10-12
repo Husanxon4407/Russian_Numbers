@@ -1745,6 +1745,7 @@
                     <option value="teens">11 - 19 (Teens)</option>
                     <option value="tens">20 - 90 (Tens)</option>
                     <option value="hundreds">100 - 900 (Hundreds)</option>
+                    <option value="random">Random (0 - 999)</option>
                 </select>
                 <div style="color: var(--text-muted); font-size: 0.9rem;">
                     Card <span id="card-index">1</span> of <span id="card-total">10</span>
@@ -2410,6 +2411,12 @@
                 for (let i = 20; i <= 90; i += 10) currentDeck.push(i);
             } else if (cat === 'hundreds') {
                 for (let i = 100; i <= 900; i += 100) currentDeck.push(i);
+            } else if (cat === 'random') {
+                // Ten different numbers, a fresh set each time this is picked
+                while (currentDeck.length < 10) {
+                    const num = Math.floor(Math.random() * 1000);
+                    if (!currentDeck.includes(num)) currentDeck.push(num);
+                }
             }
 
             cardIndex = 0;
@@ -2439,7 +2446,9 @@
             document.getElementById('card-index').innerText = cardIndex + 1;
             document.getElementById('card-total').innerText = currentDeck.length;
             document.getElementById('fc-prev').disabled = cardIndex === 0;
-            document.getElementById('fc-next').disabled = cardIndex === currentDeck.length - 1;
+            // The random deck never ends: Next on its last card deals a new set
+            const isRandom = document.getElementById('card-category').value === 'random';
+            document.getElementById('fc-next').disabled = cardIndex === currentDeck.length - 1 && !isRandom;
         }
 
         function flipFlashcard() {
@@ -2460,6 +2469,8 @@
             if (cardIndex < currentDeck.length - 1) {
                 cardIndex++;
                 updateFlashcard();
+            } else if (document.getElementById('card-category').value === 'random') {
+                loadCategoryCards();
             }
         }
 
