@@ -3,32 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Learn Russian numbers from 0 to 999,999: Cyrillic spelling, transliteration with stress marks, audio, flashcards and a quiz.">
-    <meta name="theme-color" content="#080b14">
     <title>Русские Числа - Master Russian Numbers</title>
-    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%236366f1'/%3E%3Ctext x='32' y='44' font-size='34' font-weight='700' font-family='Arial' text-anchor='middle' fill='white'%3E%E2%84%96%3C/text%3E%3C/svg%3E">
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
+    
     <style>
         :root {
             --bg-dark: #080b14;
             --primary-glow: #6366f1;
             --secondary-glow: #a855f7;
-            --accent-cyan: #22d3ee;
-            --accent-pink: #f472b6;
-            --success: #4ade80;
-            --danger: #f87171;
+            --accent-cyan: #06b6d4;
+            --accent-pink: #ec4899;
             --glass-bg: rgba(255, 255, 255, 0.04);
             --glass-border: rgba(255, 255, 255, 0.12);
             --glass-card: rgba(18, 24, 43, 0.55);
             --glass-card-hover: rgba(30, 41, 69, 0.75);
             --text-main: #f8fafc;
-            --text-muted: #a3b1c6;
+            --text-muted: #94a3b8;
             --radius-lg: 20px;
             --radius-md: 14px;
             --radius-sm: 8px;
@@ -39,12 +34,8 @@
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Plus Jakarta Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+            font-family: 'Plus Jakarta Sans', sans-serif;
             -webkit-font-smoothing: antialiased;
-        }
-
-        html {
-            -webkit-text-size-adjust: 100%;
         }
 
         body {
@@ -53,24 +44,6 @@
             min-height: 100vh;
             overflow-x: hidden;
             position: relative;
-            line-height: 1.5;
-        }
-
-        button, input, select {
-            font: inherit;
-        }
-
-        button {
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        :focus-visible {
-            outline: 2px solid var(--accent-cyan);
-            outline-offset: 3px;
-        }
-
-        button:disabled {
-            cursor: not-allowed;
         }
 
         /* Animated Canvas Background */
@@ -78,8 +51,8 @@
             position: fixed;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
+            width: 100vw;
+            height: 100vh;
             z-index: -2;
             pointer-events: none;
         }
@@ -131,9 +104,8 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            gap: 16px;
-            padding: 1rem 5%;
-            background: rgba(8, 11, 20, 0.75);
+            padding: 1.25rem 5%;
+            background: rgba(8, 11, 20, 0.65);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--glass-border);
@@ -149,26 +121,21 @@
             font-family: 'Outfit', sans-serif;
             font-size: 1.5rem;
             font-weight: 800;
-            white-space: nowrap;
-        }
-
-        .logo span {
-            font-family: inherit;
             background: linear-gradient(135deg, #ffffff 0%, #a855f7 50%, #06b6d4 100%);
             -webkit-background-clip: text;
-            background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
         .logo i {
             font-size: 1.6rem;
             color: var(--secondary-glow);
+            -webkit-text-fill-color: initial;
             filter: drop-shadow(0 0 10px rgba(168, 85, 247, 0.5));
         }
 
         .nav-links {
             display: flex;
-            gap: 6px;
+            gap: 8px;
             background: rgba(255, 255, 255, 0.05);
             padding: 6px;
             border-radius: 40px;
@@ -179,8 +146,7 @@
             background: transparent;
             border: none;
             color: var(--text-muted);
-            padding: 10px 18px;
-            min-height: 44px;
+            padding: 10px 20px;
             border-radius: 30px;
             font-weight: 600;
             font-size: 0.9rem;
@@ -188,9 +154,7 @@
             transition: var(--transition-smooth);
             display: flex;
             align-items: center;
-            justify-content: center;
             gap: 8px;
-            white-space: nowrap;
         }
 
         .nav-btn:hover {
@@ -263,21 +227,17 @@
 
         .section-header h1 {
             font-family: 'Outfit', sans-serif;
-            font-size: clamp(1.7rem, 5.5vw, 2.4rem);
+            font-size: 2.4rem;
             font-weight: 700;
-            line-height: 1.2;
             margin-bottom: 0.5rem;
             background: linear-gradient(135deg, #fff 30%, var(--text-muted));
             -webkit-background-clip: text;
-            background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
         .section-header p {
             color: var(--text-muted);
             font-size: 1rem;
-            max-width: 560px;
-            margin: 0 auto;
         }
 
         /* SEARCH & CONVERTER SECTION */
@@ -285,7 +245,7 @@
             display: flex;
             gap: 12px;
             max-width: 600px;
-            margin: 0 auto 1.5rem auto;
+            margin: 0 auto 2rem auto;
             position: relative;
         }
 
@@ -301,7 +261,6 @@
             transform: translateY(-50%);
             color: var(--text-muted);
             font-size: 1.2rem;
-            pointer-events: none;
         }
 
         .search-input {
@@ -315,11 +274,6 @@
             outline: none;
             transition: var(--transition-smooth);
             box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-        }
-
-        .search-input::placeholder {
-            color: var(--text-muted);
-            opacity: 0.8;
         }
 
         .search-input:focus {
@@ -338,11 +292,9 @@
         .chip {
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid var(--glass-border);
-            padding: 8px 18px;
-            min-height: 40px;
+            padding: 6px 16px;
             border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: 600;
+            font-size: 0.85rem;
             color: var(--text-muted);
             cursor: pointer;
             transition: var(--transition-smooth);
@@ -377,29 +329,24 @@
             color: var(--accent-cyan);
             margin-bottom: 1.5rem;
             letter-spacing: 1px;
-            font-variant-numeric: tabular-nums;
         }
 
         .cyrillic-output {
             font-family: 'Outfit', sans-serif;
-            font-size: clamp(1.8rem, 7vw, 3rem);
+            font-size: 3rem;
             font-weight: 800;
-            line-height: 1.2;
-            margin-bottom: 0.75rem;
-            color: #fff;
-            overflow-wrap: anywhere;
-        }
-
-        .cyrillic-output.is-long {
-            font-size: clamp(1.35rem, 4.6vw, 2rem);
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, #ffffff 0%, #e2e8f0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            word-wrap: break-word;
         }
 
         .phonetics-output {
-            font-size: clamp(1rem, 3.6vw, 1.3rem);
+            font-size: 1.3rem;
             color: var(--accent-cyan);
             font-style: italic;
             margin-bottom: 1.5rem;
-            overflow-wrap: anywhere;
         }
 
         /* Audio Player Bar */
@@ -407,7 +354,6 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            flex-wrap: wrap;
             gap: 15px;
             margin: 2rem 0;
         }
@@ -415,7 +361,6 @@
         .play-btn {
             width: 65px;
             height: 65px;
-            flex-shrink: 0;
             border-radius: 50%;
             background: linear-gradient(135deg, var(--primary-glow), var(--secondary-glow));
             border: none;
@@ -429,27 +374,22 @@
             box-shadow: 0 10px 25px rgba(99, 102, 241, 0.4);
         }
 
-        .play-btn:hover:not(:disabled) {
+        .play-btn:hover {
             transform: scale(1.1);
             box-shadow: 0 12px 30px rgba(168, 85, 247, 0.6);
         }
 
-        .play-btn:active:not(:disabled) {
+        .play-btn:active {
             transform: scale(0.95);
-        }
-
-        .play-btn:disabled {
-            opacity: 0.4;
-            box-shadow: none;
         }
 
         .speed-control {
             display: flex;
             align-items: center;
-            gap: 4px;
+            gap: 8px;
             background: rgba(255, 255, 255, 0.05);
-            padding: 4px 6px 4px 14px;
-            border-radius: 24px;
+            padding: 8px 14px;
+            border-radius: 20px;
             border: 1px solid var(--glass-border);
             font-size: 0.85rem;
             color: var(--text-muted);
@@ -460,16 +400,9 @@
             border: none;
             color: var(--text-muted);
             cursor: pointer;
-            padding: 6px 10px;
-            min-height: 36px;
-            min-width: 44px;
-            border-radius: 18px;
+            padding: 2px 6px;
+            border-radius: 4px;
             font-weight: 600;
-            transition: var(--transition-smooth);
-        }
-
-        .speed-btn:hover {
-            color: #fff;
         }
 
         .speed-btn.active {
@@ -486,8 +419,7 @@
         }
 
         .breakdown-title {
-            font-size: 0.9rem;
-            font-weight: 600;
+            font-size: 1rem;
             text-transform: uppercase;
             letter-spacing: 1.5px;
             color: var(--text-muted);
@@ -499,7 +431,7 @@
 
         .breakdown-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
             gap: 12px;
         }
 
@@ -523,25 +455,18 @@
             font-size: 0.9rem;
             color: var(--accent-cyan);
             font-weight: 700;
-            font-variant-numeric: tabular-nums;
         }
 
         .breakdown-cyr {
             font-size: 1.2rem;
             font-weight: 700;
             color: #fff;
-            overflow-wrap: anywhere;
         }
 
         .breakdown-phon {
             font-size: 0.85rem;
             color: var(--text-muted);
             font-style: italic;
-            overflow-wrap: anywhere;
-        }
-
-        .breakdown-empty {
-            color: var(--text-muted);
         }
 
         /* FLASHCARDS SECTION */
@@ -549,8 +474,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin: 0 auto 2rem auto;
-            max-width: 480px;
+            margin-bottom: 2rem;
             flex-wrap: wrap;
             gap: 12px;
         }
@@ -560,22 +484,10 @@
             border: 1px solid var(--glass-border);
             color: #fff;
             padding: 10px 18px;
-            min-height: 44px;
-            max-width: 100%;
-            border-radius: 22px;
+            border-radius: 20px;
+            outline: none;
             font-size: 0.95rem;
             cursor: pointer;
-        }
-
-        .category-select option {
-            background: #0f1629;
-            color: #fff;
-        }
-
-        .card-counter {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            font-variant-numeric: tabular-nums;
         }
 
         .flashcard-container {
@@ -585,7 +497,6 @@
             height: 280px;
             margin: 0 auto 2rem auto;
             cursor: pointer;
-            border-radius: var(--radius-lg);
         }
 
         .flashcard {
@@ -603,8 +514,8 @@
 
         .card-face {
             position: absolute;
-            inset: 0;
-            -webkit-backface-visibility: hidden;
+            width: 100%;
+            height: 100%;
             backface-visibility: hidden;
             border-radius: var(--radius-lg);
             border: 1px solid var(--glass-border);
@@ -612,16 +523,16 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: 2rem 1.5rem 3rem;
+            padding: 2rem;
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
         }
 
         .card-front {
-            background: linear-gradient(145deg, rgb(30, 41, 69), rgb(15, 23, 42));
+            background: linear-gradient(145deg, rgba(30, 41, 69, 0.7), rgba(15, 23, 42, 0.9));
         }
 
         .card-back {
-            background: linear-gradient(145deg, rgb(41, 44, 105), rgb(55, 33, 92));
+            background: linear-gradient(145deg, rgba(99, 102, 241, 0.25), rgba(168, 85, 247, 0.25));
             transform: rotateY(180deg);
         }
 
@@ -633,27 +544,22 @@
         }
 
         .card-cyrillic-large {
-            font-size: clamp(1.6rem, 7vw, 2.2rem);
+            font-size: 2.2rem;
             font-weight: 800;
             color: #fff;
             text-align: center;
             margin-bottom: 0.5rem;
-            overflow-wrap: anywhere;
         }
 
         .card-phonetic {
             font-size: 1.1rem;
             color: var(--accent-pink);
             font-style: italic;
-            text-align: center;
         }
 
         .card-hint {
             position: absolute;
             bottom: 15px;
-            left: 0;
-            right: 0;
-            justify-content: center;
             font-size: 0.8rem;
             color: var(--text-muted);
             display: flex;
@@ -665,53 +571,26 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            flex-wrap: wrap;
-            gap: 12px;
-            max-width: 480px;
-            margin: 0 auto;
+            gap: 20px;
         }
 
         .action-btn {
             background: rgba(255, 255, 255, 0.08);
             border: 1px solid var(--glass-border);
             color: #fff;
-            padding: 12px 22px;
-            min-height: 44px;
+            padding: 12px 24px;
             border-radius: 30px;
             cursor: pointer;
             font-weight: 600;
             transition: var(--transition-smooth);
             display: flex;
             align-items: center;
-            justify-content: center;
             gap: 8px;
-            white-space: nowrap;
         }
 
-        .action-btn:hover:not(:disabled) {
+        .action-btn:hover {
             background: rgba(255, 255, 255, 0.18);
             transform: translateY(-2px);
-        }
-
-        .action-btn:disabled {
-            opacity: 0.4;
-        }
-
-        .action-btn.primary {
-            background: linear-gradient(135deg, var(--primary-glow), var(--secondary-glow));
-            border-color: transparent;
-            box-shadow: 0 6px 18px rgba(99, 102, 241, 0.35);
-        }
-
-        .action-btn.primary:hover:not(:disabled) {
-            background: linear-gradient(135deg, var(--primary-glow), var(--secondary-glow));
-            box-shadow: 0 8px 24px rgba(168, 85, 247, 0.5);
-        }
-
-        .action-btn.small {
-            padding: 6px 14px;
-            min-height: 40px;
-            font-size: 0.8rem;
         }
 
         /* QUIZ SECTION */
@@ -725,7 +604,6 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            gap: 12px;
             margin-bottom: 2rem;
             padding-bottom: 1rem;
             border-bottom: 1px solid var(--glass-border);
@@ -744,15 +622,14 @@
         }
 
         .quiz-question {
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
-            color: var(--text-muted);
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-main);
         }
 
         .quiz-target {
-            font-size: 3.2rem;
+            font-size: 3rem;
             font-weight: 800;
-            line-height: 1.1;
             color: #fff;
             margin-bottom: 2rem;
             font-family: 'Outfit', sans-serif;
@@ -762,14 +639,13 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 15px;
-            margin-bottom: 1.25rem;
+            margin-bottom: 2rem;
         }
 
         .option-btn {
             background: rgba(255, 255, 255, 0.04);
             border: 1px solid var(--glass-border);
             padding: 18px;
-            min-height: 64px;
             border-radius: var(--radius-md);
             color: #fff;
             font-size: 1.1rem;
@@ -777,45 +653,24 @@
             cursor: pointer;
             transition: var(--transition-smooth);
             text-align: center;
-            overflow-wrap: anywhere;
         }
 
-        .option-btn:hover:not(:disabled) {
+        .option-btn:hover {
             background: rgba(255, 255, 255, 0.12);
             border-color: var(--primary-glow);
             transform: translateY(-2px);
         }
 
-        .option-btn:disabled {
-            opacity: 0.55;
-        }
-
         .option-btn.correct {
-            background: rgba(34, 197, 94, 0.25);
-            border-color: #22c55e;
-            color: var(--success);
-            opacity: 1;
+            background: rgba(34, 197, 94, 0.25) !important;
+            border-color: #22c55e !important;
+            color: #4ade80 !important;
         }
 
         .option-btn.wrong {
-            background: rgba(239, 68, 68, 0.25);
-            border-color: #ef4444;
-            color: var(--danger);
-            opacity: 1;
-        }
-
-        .quiz-feedback {
-            min-height: 1.6em;
-            margin-bottom: 1.25rem;
-            font-weight: 600;
-            color: var(--text-muted);
-        }
-
-        .quiz-feedback.correct { color: var(--success); }
-        .quiz-feedback.wrong { color: var(--danger); }
-
-        .quiz-card .action-btn {
-            margin: 0 auto;
+            background: rgba(239, 68, 68, 0.25) !important;
+            border-color: #ef4444 !important;
+            color: #f87171 !important;
         }
 
         /* REFERENCE CHART TABLE */
@@ -823,6 +678,7 @@
             width: 100%;
             border-collapse: separate;
             border-spacing: 0 8px;
+            margin-top: 1rem;
         }
 
         .chart-table th {
@@ -830,7 +686,6 @@
             text-align: left;
             color: var(--text-muted);
             font-size: 0.85rem;
-            font-style: normal;
             text-transform: uppercase;
             letter-spacing: 1px;
             border-bottom: 1px solid var(--glass-border);
@@ -838,7 +693,7 @@
 
         .chart-table td {
             background: rgba(255, 255, 255, 0.03);
-            padding: 12px 18px;
+            padding: 14px 18px;
             font-size: 1rem;
             color: var(--text-main);
         }
@@ -849,29 +704,15 @@
             font-weight: 700;
             color: var(--accent-cyan);
             width: 15%;
-            font-variant-numeric: tabular-nums;
         }
 
         .chart-table tr td:last-child {
             border-top-right-radius: var(--radius-md);
             border-bottom-right-radius: var(--radius-md);
-            width: 1%;
         }
 
         .chart-table tr:hover td {
             background: rgba(255, 255, 255, 0.08);
-        }
-
-        .chart-table tr.chart-group td,
-        .chart-table tr.chart-group:hover td {
-            background: transparent;
-            color: var(--text-muted);
-            font-size: 0.8rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            padding: 14px 18px 2px;
-            width: auto;
         }
 
         .chart-cyrillic {
@@ -884,6 +725,103 @@
             font-style: italic;
         }
 
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .cyrillic-output {
+                font-size: 2.2rem;
+            }
+
+            .options-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .flashcard-container {
+                height: 240px;
+            }
+        }
+
+        /* ===== Additions: header controls, toast, states ===== */
+        body {
+            transition: background-color 0.35s ease, color 0.35s ease;
+        }
+
+        button, input, select {
+            font-family: inherit;
+        }
+
+        :focus-visible {
+            outline: 2px solid var(--accent-cyan);
+            outline-offset: 3px;
+        }
+
+        .header-controls {
+            display: flex;
+            gap: 8px;
+        }
+
+        .icon-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
+            color: var(--text-muted);
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .icon-btn:hover {
+            color: var(--text-main);
+            background: rgba(255, 255, 255, 0.12);
+            transform: translateY(-2px);
+        }
+
+        .icon-btn.active {
+            color: #fff;
+            border-color: transparent;
+            background: linear-gradient(135deg, var(--primary-glow), var(--secondary-glow));
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+        }
+
+        .play-btn:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .action-btn:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .option-btn:disabled {
+            cursor: default;
+            transform: none;
+        }
+
+        .card-face {
+            -webkit-backface-visibility: hidden;
+        }
+
+        .cyrillic-output,
+        .phonetics-output,
+        .breakdown-cyr,
+        .card-cyrillic-large,
+        .option-btn {
+            overflow-wrap: anywhere;
+        }
+
         /* Phonetic shown under the Cyrillic word on narrow screens */
         .chart-phonetic-inline {
             display: none;
@@ -891,7 +829,6 @@
             font-size: 0.85rem;
         }
 
-        /* Toast message */
         .toast {
             position: fixed;
             left: 50%;
@@ -900,7 +837,7 @@
             max-width: calc(100% - 32px);
             background: rgba(15, 22, 41, 0.95);
             border: 1px solid var(--glass-border);
-            color: var(--text-main);
+            color: #f8fafc;
             padding: 12px 20px;
             border-radius: var(--radius-md);
             font-size: 0.9rem;
@@ -916,53 +853,66 @@
             transform: translate(-50%, 0);
         }
 
-        /* Responsive Design */
-        @media (max-width: 900px) {
-            .nav-extra {
-                display: none;
+        /* Header wraps the tabs onto their own row when space runs out */
+        @media (max-width: 1150px) {
+            header {
+                flex-wrap: wrap;
+                row-gap: 12px;
+            }
+
+            header::after {
+                content: '';
+                order: 2;
+                flex-basis: 100%;
+            }
+
+            .header-controls {
+                order: 1;
+            }
+
+            .nav-links {
+                order: 3;
+                margin: 0 auto;
             }
         }
 
         @media (max-width: 768px) {
             header {
-                flex-direction: column;
-                gap: 6px;
-                padding: 0.5rem 1rem;
+                flex-direction: row;
+            }
+        }
+
+        /* Phones */
+        @media (max-width: 600px) {
+            header {
+                position: static;
+                padding: 1rem;
             }
 
             .logo {
-                font-size: 1.25rem;
-            }
-
-            .logo i {
                 font-size: 1.3rem;
             }
 
             .nav-links {
                 width: 100%;
                 display: grid;
-                grid-template-columns: repeat(4, 1fr);
-                gap: 4px;
-                padding: 4px;
-                border-radius: 18px;
+                grid-template-columns: 1fr 1fr;
+                border-radius: 26px;
             }
 
             .nav-btn {
-                flex-direction: column;
-                gap: 4px;
-                padding: 8px 2px;
-                font-size: 0.72rem;
-                border-radius: 14px;
-                min-width: 0;
-            }
-
-            .nav-btn i {
-                font-size: 1rem;
+                justify-content: center;
+                padding: 10px 8px;
+                font-size: 0.85rem;
             }
 
             main {
                 margin: 1.5rem auto;
                 padding: 0 1rem;
+            }
+
+            .section-header h1 {
+                font-size: 1.8rem;
             }
 
             .glass-panel {
@@ -973,38 +923,38 @@
                 padding: 1.75rem 1.25rem;
             }
 
-            .section-header {
-                margin-bottom: 1.5rem;
+            .cyrillic-output {
+                font-size: 1.9rem;
             }
 
-            .section-header p {
-                font-size: 0.95rem;
+            .cyrillic-output.is-long {
+                font-size: 1.4rem;
             }
 
-            .quick-chips {
-                margin-bottom: 1.75rem;
+            .phonetics-output {
+                font-size: 1.05rem;
+            }
+
+            .audio-action-bar {
+                flex-wrap: wrap;
             }
 
             .breakdown-grid {
                 grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
             }
 
-            .options-grid {
-                grid-template-columns: 1fr;
-                gap: 10px;
+            .card-cyrillic-large {
+                font-size: 1.7rem;
             }
 
-            .quiz-target {
-                font-size: 2.6rem;
-                margin-bottom: 1.5rem;
-            }
-
-            .flashcard-container {
-                height: 240px;
+            .deck-nav {
+                flex-wrap: wrap;
+                gap: 12px;
             }
 
             .deck-nav .action-btn {
                 flex: 1 1 calc(50% - 6px);
+                justify-content: center;
             }
 
             .deck-nav .replay-btn {
@@ -1014,7 +964,7 @@
 
             .chart-table th,
             .chart-table td {
-                padding: 10px 10px;
+                padding: 10px 8px;
             }
 
             .chart-table th.chart-phonetic,
@@ -1026,34 +976,6 @@
             .chart-phonetic-inline {
                 display: block;
             }
-
-            .chart-table tr.chart-group td {
-                padding: 12px 10px 2px;
-            }
-        }
-
-        @media (max-width: 400px) {
-            .glass-panel {
-                padding: 1rem;
-            }
-
-            .chart-table th,
-            .chart-table td {
-                padding: 8px 6px;
-            }
-
-            .chart-table th {
-                font-size: 0.7rem;
-                letter-spacing: 0;
-            }
-
-            .chart-cyrillic {
-                overflow-wrap: anywhere;
-            }
-
-            .chart-table tr.chart-group td {
-                padding: 12px 6px 2px;
-            }
         }
 
         @media (prefers-reduced-motion: reduce) {
@@ -1062,12 +984,150 @@
                 transition-duration: 0.01ms !important;
             }
         }
+
+        /* ===== LIGHT MODE ===== */
+        [data-theme="light"] {
+            color-scheme: light;
+            --bg-dark: #eef1fb;
+            --glass-bg: rgba(15, 23, 42, 0.04);
+            --glass-border: rgba(15, 23, 42, 0.13);
+            --glass-card: rgba(255, 255, 255, 0.72);
+            --glass-card-hover: rgba(255, 255, 255, 0.9);
+            --accent-cyan: #0e7490;
+            --accent-pink: #be185d;
+            --text-main: #0f172a;
+            --text-muted: #55627a;
+        }
+
+        :root {
+            color-scheme: dark;
+        }
+
+        @keyframes pulse-orb-light {
+            0% { transform: scale(1) translate(0, 0); opacity: 0.16; }
+            100% { transform: scale(1.2) translate(30px, -20px); opacity: 0.3; }
+        }
+
+        [data-theme="light"] .glow-orb {
+            animation-name: pulse-orb-light;
+            opacity: 0.2;
+        }
+
+        [data-theme="light"] header {
+            background: rgba(255, 255, 255, 0.72);
+        }
+
+        [data-theme="light"] .logo {
+            background: linear-gradient(135deg, #1e1b4b 0%, #9333ea 50%, #0891b2 100%);
+            -webkit-background-clip: text;
+        }
+
+        [data-theme="light"] .nav-links,
+        [data-theme="light"] .icon-btn:not(.active),
+        [data-theme="light"] .chip,
+        [data-theme="light"] .speed-control {
+            background: rgba(15, 23, 42, 0.05);
+        }
+
+        [data-theme="light"] .nav-btn:hover:not(.active),
+        [data-theme="light"] .icon-btn:hover:not(.active),
+        [data-theme="light"] .chip:hover {
+            background: rgba(15, 23, 42, 0.1);
+            color: var(--text-main);
+        }
+
+        [data-theme="light"] .glass-panel {
+            box-shadow: 0 20px 50px rgba(49, 46, 129, 0.12),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.7);
+        }
+
+        [data-theme="light"] .section-header h1 {
+            background: linear-gradient(135deg, #0f172a 30%, #55627a);
+            -webkit-background-clip: text;
+        }
+
+        [data-theme="light"] .search-input,
+        [data-theme="light"] .category-select {
+            background: rgba(255, 255, 255, 0.92);
+            color: var(--text-main);
+            box-shadow: 0 4px 20px rgba(49, 46, 129, 0.08);
+        }
+
+        [data-theme="light"] .result-card {
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.92), rgba(236, 239, 252, 0.92));
+            box-shadow: 0 15px 35px rgba(49, 46, 129, 0.12);
+        }
+
+        [data-theme="light"] .cyrillic-output {
+            background: linear-gradient(135deg, #0f172a 0%, #334155 100%);
+            -webkit-background-clip: text;
+        }
+
+        [data-theme="light"] .speed-btn.active {
+            background: rgba(14, 116, 144, 0.15);
+        }
+
+        [data-theme="light"] .breakdown-item,
+        [data-theme="light"] .chart-table td {
+            background: rgba(15, 23, 42, 0.035);
+        }
+
+        [data-theme="light"] .breakdown-item:hover,
+        [data-theme="light"] .chart-table tr:hover td {
+            background: rgba(15, 23, 42, 0.075);
+        }
+
+        [data-theme="light"] .breakdown-cyr,
+        [data-theme="light"] .card-cyrillic-large,
+        [data-theme="light"] .quiz-target,
+        [data-theme="light"] .chart-cyrillic {
+            color: var(--text-main);
+        }
+
+        [data-theme="light"] .card-face {
+            box-shadow: 0 15px 35px rgba(49, 46, 129, 0.16);
+        }
+
+        [data-theme="light"] .card-front {
+            background: linear-gradient(145deg, #ffffff, #e9edfb);
+        }
+
+        [data-theme="light"] .card-back {
+            background: linear-gradient(145deg, #e3e5ff, #f1e4ff);
+        }
+
+        [data-theme="light"] .action-btn,
+        [data-theme="light"] .option-btn {
+            background: rgba(15, 23, 42, 0.05);
+            color: var(--text-main);
+        }
+
+        [data-theme="light"] .action-btn:hover:not(:disabled),
+        [data-theme="light"] .option-btn:hover:not(:disabled) {
+            background: rgba(15, 23, 42, 0.1);
+        }
+
+        [data-theme="light"] .option-btn.correct {
+            color: #15803d !important;
+        }
+
+        [data-theme="light"] .option-btn.wrong {
+            color: #b91c1c !important;
+        }
     </style>
+    <script>
+        // Apply the saved theme before the page paints
+        try {
+            if (localStorage.getItem('theme') === 'light') {
+                document.documentElement.setAttribute('data-theme', 'light');
+            }
+        } catch (e) {}
+    </script>
 </head>
 <body>
 
     <!-- Animated Particle Canvas -->
-    <canvas id="bg-canvas" aria-hidden="true"></canvas>
+    <canvas id="bg-canvas"></canvas>
 
     <!-- Ambient Gradient Glowing Orbs -->
     <div class="glow-orb orb-1"></div>
@@ -1077,23 +1137,31 @@
     <!-- Top Navigation Header -->
     <header>
         <div class="logo">
-            <i class="fa-solid fa-language" aria-hidden="true"></i>
-            <span lang="ru">Русские Числа</span>
+            <i class="fa-solid fa-language"></i>
+            <span>Русские Числа</span>
         </div>
-        <nav class="nav-links" aria-label="Sections">
-            <button class="nav-btn active" data-tab="lookup" aria-current="page" onclick="switchTab('lookup')">
-                <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i> <span>Lookup<span class="nav-extra"> &amp; Audio</span></span>
+        <nav class="nav-links">
+            <button class="nav-btn active" data-tab="lookup" onclick="switchTab('lookup')">
+                <i class="fa-solid fa-magnifying-glass"></i> Lookup &amp; Audio
             </button>
             <button class="nav-btn" data-tab="cards" onclick="switchTab('cards')">
-                <i class="fa-solid fa-clone" aria-hidden="true"></i> <span>Flashcards</span>
+                <i class="fa-solid fa-clone"></i> Flashcards
             </button>
             <button class="nav-btn" data-tab="quiz" onclick="switchTab('quiz')">
-                <i class="fa-solid fa-gamepad" aria-hidden="true"></i> <span>Quiz<span class="nav-extra"> Mode</span></span>
+                <i class="fa-solid fa-gamepad"></i> Quiz Mode
             </button>
             <button class="nav-btn" data-tab="chart" onclick="switchTab('chart')">
-                <i class="fa-solid fa-table" aria-hidden="true"></i> <span><span class="nav-extra">Reference </span>Chart</span>
+                <i class="fa-solid fa-table"></i> Reference Chart
             </button>
         </nav>
+        <div class="header-controls">
+            <button class="icon-btn" id="music-btn" onclick="toggleMusic()" title="Play background music" aria-label="Play background music" aria-pressed="false">
+                <i class="fa-solid fa-music"></i>
+            </button>
+            <button class="icon-btn" id="theme-btn" onclick="toggleTheme()" title="Switch to light mode" aria-label="Switch to light mode">
+                <i class="fa-solid fa-sun"></i>
+            </button>
+        </div>
     </header>
 
     <main>
@@ -1101,46 +1169,45 @@
         <section id="lookup-view" class="section-view active">
             <div class="section-header">
                 <h1>Interactive Number Engine</h1>
-                <p>Type any number from 0 to 999,999 to get its Russian spelling, pronunciation and breakdown</p>
+                <p>Type any number (e.g. 154) to generate full Cyrillic spelling, audio pronunciation & breakdown</p>
             </div>
 
             <div class="search-container">
                 <div class="search-input-wrap">
-                    <i class="fa-solid fa-hashtag" aria-hidden="true"></i>
-                    <input type="text" inputmode="numeric" autocomplete="off" maxlength="6" id="num-input" class="search-input" aria-label="Number to convert" placeholder="Type a number (e.g. 154)..." value="154" oninput="handleSearch()">
+                    <i class="fa-solid fa-hashtag"></i>
+                    <input type="text" inputmode="numeric" autocomplete="off" maxlength="6" id="num-input" class="search-input" aria-label="Number to convert" placeholder="Type a number (e.g. 154)..." oninput="handleSearch()">
                 </div>
             </div>
 
             <div class="quick-chips">
-                <button type="button" class="chip" onclick="setNumber(154)">154</button>
-                <button type="button" class="chip" onclick="setNumber(7)">7</button>
-                <button type="button" class="chip" onclick="setNumber(42)">42</button>
-                <button type="button" class="chip" onclick="setNumber(100)">100</button>
-                <button type="button" class="chip" onclick="setNumber(365)">365</button>
-                <button type="button" class="chip" onclick="setNumber(1984)">1984</button>
-                <button type="button" class="chip" onclick="setRandomNumber()"><i class="fa-solid fa-dice" aria-hidden="true"></i> Random</button>
+                <span class="chip" onclick="setNumber(154)">154</span>
+                <span class="chip" onclick="setNumber(7)">7</span>
+                <span class="chip" onclick="setNumber(42)">42</span>
+                <span class="chip" onclick="setNumber(100)">100</span>
+                <span class="chip" onclick="setNumber(365)">365</span>
+                <span class="chip" onclick="setNumber(1984)">1984</span>
             </div>
 
             <div class="glass-panel result-card">
-                <div class="number-badge" id="res-badge">154</div>
-                <div class="cyrillic-output" id="res-cyrillic" lang="ru" aria-live="polite">сто пятьдесят четыре</div>
-                <div class="phonetics-output" id="res-phonetic">sto pyat'desyát chetýre</div>
+                <div class="number-badge" id="res-badge">—</div>
+                <div class="cyrillic-output" id="res-cyrillic">Введите число</div>
+                <div class="phonetics-output" id="res-phonetic">Type a number above to begin</div>
 
                 <div class="audio-action-bar">
-                    <button class="play-btn" id="play-btn" onclick="speakCurrentNumber()" title="Listen to pronunciation" aria-label="Listen to pronunciation">
-                        <i class="fa-solid fa-volume-high" aria-hidden="true"></i>
+                    <button class="play-btn" id="play-btn" onclick="speakCurrentNumber()" title="Listen Pronunciation" aria-label="Listen to pronunciation" disabled>
+                        <i class="fa-solid fa-volume-high"></i>
                     </button>
                     <div class="speed-control">
                         <span>Speed:</span>
-                        <button class="speed-btn active" aria-pressed="true" onclick="setSpeechSpeed(1.0, this)">1.0x</button>
-                        <button class="speed-btn" aria-pressed="false" onclick="setSpeechSpeed(0.7, this)">0.7x</button>
-                        <button class="speed-btn" aria-pressed="false" onclick="setSpeechSpeed(0.5, this)">0.5x</button>
+                        <button class="speed-btn active" onclick="setSpeechSpeed(1.0, this)">1.0x</button>
+                        <button class="speed-btn" onclick="setSpeechSpeed(0.7, this)">0.7x</button>
+                        <button class="speed-btn" onclick="setSpeechSpeed(0.5, this)">0.5x</button>
                     </div>
                 </div>
 
                 <div class="breakdown-section">
                     <div class="breakdown-title">
-                        <i class="fa-solid fa-cubes" aria-hidden="true"></i> Number Component Breakdown
+                        <i class="fa-solid fa-cubes"></i> Number Component Breakdown
                     </div>
                     <div class="breakdown-grid" id="breakdown-grid">
                         <!-- Populated by JS -->
@@ -1153,70 +1220,68 @@
         <section id="cards-view" class="section-view">
             <div class="section-header">
                 <h1>3D Interactive Flashcards</h1>
-                <p>Tap the card to flip it and hear the Russian pronunciation</p>
+                <p>Click on the card to flip and hear native Russian speech</p>
             </div>
 
             <div class="flashcard-controls">
-                <select id="card-category" class="category-select" aria-label="Card category" onchange="loadCategoryCards()">
+                <select id="card-category" class="category-select" onchange="loadCategoryCards()">
                     <option value="basic">0 - 10 (Basic Numbers)</option>
                     <option value="teens">11 - 19 (Teens)</option>
                     <option value="tens">20 - 90 (Tens)</option>
                     <option value="hundreds">100 - 900 (Hundreds)</option>
                 </select>
-                <div class="card-counter">
-                    Card <span id="card-index">1</span> of <span id="card-total">11</span>
+                <div style="color: var(--text-muted); font-size: 0.9rem;">
+                    Card <span id="card-index">1</span> of <span id="card-total">10</span>
                 </div>
             </div>
 
-            <div class="flashcard-container" id="flashcard-container" role="button" tabindex="0" aria-label="Flashcard, press to flip" onclick="flipFlashcard()">
+            <div class="flashcard-container" onclick="flipFlashcard()">
                 <div class="flashcard" id="flashcard">
                     <div class="card-face card-front">
-                        <div class="card-number-large" id="fc-digit">0</div>
+                        <div class="card-number-large" id="fc-digit">154</div>
                         <div class="card-hint">
-                            <i class="fa-solid fa-rotate" aria-hidden="true"></i> Tap to reveal Russian
+                            <i class="fa-solid fa-rotate"></i> Click to reveal Russian
                         </div>
                     </div>
                     <div class="card-face card-back">
-                        <div class="card-cyrillic-large" id="fc-cyrillic" lang="ru">ноль</div>
-                        <div class="card-phonetic" id="fc-phonetic">nol'</div>
-                        <div class="card-hint">
-                            <i class="fa-solid fa-volume-high" aria-hidden="true"></i> Playing pronunciation
+                        <div class="card-cyrillic-large" id="fc-cyrillic">сто пятьдесят четыре</div>
+                        <div class="card-phonetic" id="fc-phonetic">sto pyat'desyát chetýre</div>
+                        <div class="card-hint" style="margin-top: 15px;">
+                            <i class="fa-solid fa-volume-high"></i> Auto playing pronunciation
                         </div>
                     </div>
                 </div>
             </div>
 
             <div class="deck-nav">
-                <button class="action-btn" id="fc-prev" onclick="prevFlashcard()"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Previous</button>
-                <button class="action-btn replay-btn" onclick="speakFlashcard()"><i class="fa-solid fa-volume-high" aria-hidden="true"></i> Play Audio</button>
-                <button class="action-btn" id="fc-next" onclick="nextFlashcard()">Next <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button>
+                <button class="action-btn" id="fc-prev" onclick="prevFlashcard()"><i class="fa-solid fa-arrow-left"></i> Previous</button>
+                <button class="action-btn replay-btn" onclick="speakFlashcard()"><i class="fa-solid fa-volume-high"></i> Replay Audio</button>
+                <button class="action-btn" id="fc-next" onclick="nextFlashcard()">Next <i class="fa-solid fa-arrow-right"></i></button>
             </div>
         </section>
 
         <!-- TAB 3: QUIZ MODE -->
         <section id="quiz-view" class="section-view">
             <div class="section-header">
-                <h1>Practice &amp; Quiz Challenge</h1>
+                <h1>Practice & Quiz Challenge</h1>
                 <p>Test your knowledge with instant multiple choice feedback</p>
             </div>
 
             <div class="glass-panel quiz-card">
                 <div class="quiz-score-header">
                     <div class="score-box">Score: <span id="quiz-score">0</span></div>
-                    <div class="streak-box"><i class="fa-solid fa-fire" aria-hidden="true"></i> Streak: <span id="quiz-streak">0</span></div>
+                    <div class="streak-box"><i class="fa-solid fa-fire"></i> Streak: <span id="quiz-streak">0</span></div>
                 </div>
 
                 <div class="quiz-question">Select the correct Russian spelling for:</div>
                 <div class="quiz-target" id="quiz-target-number">154</div>
 
-                <div class="options-grid" id="options-grid" lang="ru">
+                <div class="options-grid" id="options-grid">
                     <!-- Populated dynamically -->
                 </div>
 
-                <div class="quiz-feedback" id="quiz-feedback" aria-live="polite"></div>
-
-                <button class="action-btn" id="quiz-next" onclick="generateQuizQuestion()">
-                    <i class="fa-solid fa-arrows-rotate" aria-hidden="true"></i> <span id="quiz-next-label">Skip Question</span>
+                <button class="action-btn" style="margin: 0 auto;" onclick="generateQuizQuestion()">
+                    <i class="fa-solid fa-arrows-rotate"></i> Next Question
                 </button>
             </div>
         </section>
@@ -1225,7 +1290,7 @@
         <section id="chart-view" class="section-view">
             <div class="section-header">
                 <h1>Master Reference Guide</h1>
-                <p>Core building blocks of the Russian number system</p>
+                <p>Core building blocks of Russian numbers system</p>
             </div>
 
             <div class="glass-panel">
@@ -1234,7 +1299,7 @@
                         <tr>
                             <th>Number</th>
                             <th>Cyrillic</th>
-                            <th class="chart-phonetic">Phonetic Transliteration</th>
+                            <th class="chart-phonetic" style="font-style: normal;">Phonetic Transliteration</th>
                             <th>Audio</th>
                         </tr>
                     </thead>
@@ -1252,8 +1317,6 @@
         /* ===================================================
            RUSSIAN NUMBER TRANSLATION ENGINE & DICTIONARY
            =================================================== */
-        const MAX_NUMBER = 999999;
-
         const units = {
             0: { cyr: "ноль", phon: "nol'" },
             1: { cyr: "один", phon: "odín" },
@@ -1333,17 +1396,18 @@
             const h = Math.floor(num / 100) * 100;
             const rem = num % 100;
 
-            if (h > 0) parts.push({ val: h, ...hundreds[h] });
+            if (h > 0) parts.push({ val: h, cyr: hundreds[h].cyr, phon: hundreds[h].phon });
 
             if (rem >= 10 && rem <= 19) {
-                parts.push({ val: rem, ...teens[rem] });
+                parts.push({ val: rem, cyr: teens[rem].cyr, phon: teens[rem].phon });
             } else {
                 const t = Math.floor(rem / 10) * 10;
                 const u = rem % 10;
-                if (t > 0) parts.push({ val: t, ...tens[t] });
+
+                if (t > 0) parts.push({ val: t, cyr: tens[t].cyr, phon: tens[t].phon });
                 if (u > 0) {
                     const word = (feminine && feminineUnits[u]) || units[u];
-                    parts.push({ val: u, ...word });
+                    parts.push({ val: u, cyr: word.cyr, phon: word.phon });
                 }
             }
             return parts;
@@ -1351,47 +1415,46 @@
 
         // Converter Function for Numbers 0 to 999,999
         function convertToRussian(num) {
-            num = Number(num);
-            if (!Number.isInteger(num) || num < 0 || num > MAX_NUMBER) {
-                return { valid: false, cyrillic: "", phonetic: "", breakdown: [] };
+            num = parseInt(num);
+            if (isNaN(num) || num < 0 || num > 999999) {
+                return {
+                    cyrillic: "Пожалуйста, введите число от 0 до 999 999",
+                    phonetic: "Please enter a valid number (0 - 999,999)",
+                    breakdown: []
+                };
             }
 
             if (num === 0) {
                 return {
-                    valid: true,
                     cyrillic: units[0].cyr,
                     phonetic: units[0].phon,
-                    breakdown: [{ val: 0, ...units[0] }]
+                    breakdown: [{ val: 0, cyr: units[0].cyr, phon: units[0].phon }]
                 };
             }
 
-            const breakdown = [];
-            const thousands = Math.floor(num / 1000);
-            const remainder = num % 1000;
+            let breakdown = [];
+            let thousands = Math.floor(num / 1000);
+            let remainder = num % 1000;
 
+            // Thousands handling (for larger inputs up to 999,999)
             if (thousands > 0) {
                 // 1000 is just "тысяча"; other counts take feminine один/два
-                const countParts = thousands === 1 ? [] : convertBelowThousand(thousands, true);
-                const form = thousandForm(thousands);
+                let countParts = thousands === 1 ? [] : convertBelowThousand(thousands, true);
+                let form = thousandForm(thousands);
                 breakdown.push({
                     val: thousands * 1000,
-                    cyr: [...countParts.map(p => p.cyr), form.cyr].join(" "),
-                    phon: [...countParts.map(p => p.phon), form.phon].join(" ")
+                    cyr: countParts.map(p => p.cyr).concat(form.cyr).join(" "),
+                    phon: countParts.map(p => p.phon).concat(form.phon).join(" ")
                 });
             }
 
             breakdown.push(...convertBelowThousand(remainder, false));
 
             return {
-                valid: true,
                 cyrillic: breakdown.map(p => p.cyr).join(" "),
                 phonetic: breakdown.map(p => p.phon).join(" "),
                 breakdown: breakdown
             };
-        }
-
-        function formatNumber(num) {
-            return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
         }
 
         /* ===================================================
@@ -1399,16 +1462,10 @@
            =================================================== */
         function switchTab(tabId) {
             document.querySelectorAll('.section-view').forEach(s => s.classList.remove('active'));
-            document.querySelectorAll('.nav-btn').forEach(b => {
-                const isActive = b.dataset.tab === tabId;
-                b.classList.toggle('active', isActive);
-                if (isActive) b.setAttribute('aria-current', 'page');
-                else b.removeAttribute('aria-current');
-            });
+            document.querySelectorAll('.nav-btn').forEach(b => b.classList.toggle('active', b.dataset.tab === tabId));
 
             document.getElementById(`${tabId}-view`).classList.add('active');
             if ('speechSynthesis' in window) window.speechSynthesis.cancel();
-            window.scrollTo(0, 0);
         }
 
         function setNumber(val) {
@@ -1416,43 +1473,34 @@
             handleSearch();
         }
 
-        function setRandomNumber() {
-            // Favour shorter numbers so they stay learnable
-            const maxByLength = [10, 100, 1000, 10000, 1000000];
-            const max = maxByLength[Math.floor(Math.random() * maxByLength.length)];
-            setNumber(Math.floor(Math.random() * max));
-        }
-
         function handleSearch() {
             const input = document.getElementById('num-input');
             // Digits only, no leading zeros
-            const digits = input.value.replace(/\D/g, '').slice(0, 6).replace(/^0+(?=\d)/, '');
-            if (input.value !== digits) input.value = digits;
+            const val = input.value.replace(/\D/g, '').slice(0, 6).replace(/^0+(?=\d)/, '');
+            if (input.value !== val) input.value = val;
 
-            const badge = document.getElementById('res-badge');
             const cyrEl = document.getElementById('res-cyrillic');
-            const phonEl = document.getElementById('res-phonetic');
             const grid = document.getElementById('breakdown-grid');
             const playBtn = document.getElementById('play-btn');
             grid.innerHTML = '';
 
-            if (digits === '') {
-                badge.innerText = '—';
+            // Nothing typed yet
+            if (val === '') {
+                document.getElementById('res-badge').innerText = '—';
                 cyrEl.innerText = 'Введите число';
                 cyrEl.classList.remove('is-long');
-                phonEl.innerText = 'Type a number from 0 to 999,999';
+                document.getElementById('res-phonetic').innerText = 'Type a number above to begin';
                 playBtn.disabled = true;
-                grid.innerHTML = '<div class="breakdown-empty">No breakdown available</div>';
+                grid.innerHTML = '<div style="color:var(--text-muted);">No breakdown available</div>';
                 return;
             }
 
-            const num = parseInt(digits, 10);
-            const res = convertToRussian(num);
+            const res = convertToRussian(val);
 
-            badge.innerText = formatNumber(num);
+            document.getElementById('res-badge').innerText = val;
             cyrEl.innerText = res.cyrillic;
             cyrEl.classList.toggle('is-long', res.cyrillic.length > 28);
-            phonEl.innerText = res.phonetic;
+            document.getElementById('res-phonetic').innerText = res.phonetic;
             playBtn.disabled = false;
 
             // Populate Breakdown Grid
@@ -1460,8 +1508,8 @@
                 const el = document.createElement('div');
                 el.className = 'breakdown-item';
                 el.innerHTML = `
-                    <span class="breakdown-val">${formatNumber(item.val)}</span>
-                    <span class="breakdown-cyr" lang="ru">${item.cyr}</span>
+                    <span class="breakdown-val">${item.val}</span>
+                    <span class="breakdown-cyr">${item.cyr}</span>
                     <span class="breakdown-phon">${item.phon}</span>
                 `;
                 grid.appendChild(el);
@@ -1474,25 +1522,209 @@
             toast.innerText = message;
             toast.classList.add('show');
             clearTimeout(toastTimer);
-            toastTimer = setTimeout(() => toast.classList.remove('show'), 4000);
+            toastTimer = setTimeout(() => toast.classList.remove('show'), 4500);
+        }
+
+        /* ===================================================
+           LIGHT / DARK THEME
+           =================================================== */
+        function isLightTheme() {
+            return document.documentElement.getAttribute('data-theme') === 'light';
+        }
+
+        function updateThemeButton() {
+            const btn = document.getElementById('theme-btn');
+            const label = isLightTheme() ? 'Switch to dark mode' : 'Switch to light mode';
+            btn.innerHTML = `<i class="fa-solid ${isLightTheme() ? 'fa-moon' : 'fa-sun'}"></i>`;
+            btn.title = label;
+            btn.setAttribute('aria-label', label);
+        }
+
+        function toggleTheme() {
+            const next = isLightTheme() ? 'dark' : 'light';
+            if (next === 'light') document.documentElement.setAttribute('data-theme', 'light');
+            else document.documentElement.removeAttribute('data-theme');
+
+            try { localStorage.setItem('theme', next); } catch (e) {}
+            updateThemeButton();
+        }
+
+        /* ===================================================
+           BACKGROUND MUSIC (generated in the browser, no audio file)
+           =================================================== */
+        const MUSIC_VOLUME = 0.6;
+        const CHORD_SECONDS = 8;
+
+        // Slow four-chord loop, as MIDI notes (first note is the bass)
+        const musicChords = [
+            [45, 57, 60, 64, 71],   // A minor add9
+            [41, 57, 60, 64, 67],   // F major 9
+            [48, 55, 60, 64, 71],   // C major 7
+            [43, 55, 59, 62, 69]    // G add9
+        ];
+
+        const music = {
+            ctx: null,
+            master: null,
+            padBus: null,
+            delay: null,
+            playing: false,
+            timer: null,
+            nextChordTime: 0,
+            chordIndex: 0
+        };
+
+        function midiToFreq(note) {
+            return 440 * Math.pow(2, (note - 69) / 12);
+        }
+
+        function initMusic() {
+            const AudioCtx = window.AudioContext || window.webkitAudioContext;
+            if (!AudioCtx) return false;
+
+            const ctx = new AudioCtx();
+
+            const master = ctx.createGain();
+            master.gain.value = 0;
+            master.connect(ctx.destination);
+
+            // Soft low-pass keeps the pads warm
+            const padBus = ctx.createBiquadFilter();
+            padBus.type = 'lowpass';
+            padBus.frequency.value = 1400;
+            padBus.connect(master);
+
+            // Echo for a sense of space
+            const delay = ctx.createDelay(1.0);
+            delay.delayTime.value = 0.48;
+            const feedback = ctx.createGain();
+            feedback.gain.value = 0.38;
+            const wet = ctx.createGain();
+            wet.gain.value = 0.5;
+            delay.connect(feedback);
+            feedback.connect(delay);
+            delay.connect(wet);
+            wet.connect(master);
+
+            music.ctx = ctx;
+            music.master = master;
+            music.padBus = padBus;
+            music.delay = delay;
+            return true;
+        }
+
+        function playPadNote(freq, start, duration, peak, type) {
+            const ctx = music.ctx;
+            const osc = ctx.createOscillator();
+            const gain = ctx.createGain();
+            osc.type = type;
+            osc.frequency.value = freq;
+
+            gain.gain.setValueAtTime(0.0001, start);
+            gain.gain.linearRampToValueAtTime(peak, start + 2.5);
+            gain.gain.setValueAtTime(peak, start + duration - 3.5);
+            gain.gain.linearRampToValueAtTime(0.0001, start + duration);
+
+            osc.connect(gain);
+            gain.connect(music.padBus);
+            osc.start(start);
+            osc.stop(start + duration + 0.1);
+        }
+
+        function playBellNote(freq, start) {
+            const ctx = music.ctx;
+            const osc = ctx.createOscillator();
+            const gain = ctx.createGain();
+            osc.type = 'sine';
+            osc.frequency.value = freq;
+
+            gain.gain.setValueAtTime(0.0001, start);
+            gain.gain.linearRampToValueAtTime(0.045, start + 0.02);
+            gain.gain.exponentialRampToValueAtTime(0.0001, start + 3.5);
+
+            osc.connect(gain);
+            gain.connect(music.master);
+            gain.connect(music.delay);
+            osc.start(start);
+            osc.stop(start + 3.6);
+        }
+
+        function scheduleChord(chord, start) {
+            // Notes overlap into the next chord so changes are seamless
+            const duration = CHORD_SECONDS + 3;
+
+            chord.forEach((note, i) => {
+                const freq = midiToFreq(note);
+                const peak = i === 0 ? 0.11 : 0.05;
+                playPadNote(freq, start, duration, peak, 'sine');
+                if (i > 0) playPadNote(freq * 1.003, start, duration, peak * 0.5, 'triangle');
+            });
+
+            // A few quiet bell notes picked from the chord
+            const bellCount = 2 + Math.floor(Math.random() * 2);
+            for (let i = 0; i < bellCount; i++) {
+                const note = chord[1 + Math.floor(Math.random() * (chord.length - 1))] + 12;
+                playBellNote(midiToFreq(note), start + 1 + Math.random() * (CHORD_SECONDS - 2));
+            }
+        }
+
+        function musicTick() {
+            while (music.nextChordTime < music.ctx.currentTime + 4) {
+                scheduleChord(musicChords[music.chordIndex % musicChords.length], music.nextChordTime);
+                music.nextChordTime += CHORD_SECONDS;
+                music.chordIndex++;
+            }
+        }
+
+        function fadeMusicTo(level, seconds) {
+            const now = music.ctx.currentTime;
+            music.master.gain.cancelScheduledValues(now);
+            music.master.gain.setValueAtTime(music.master.gain.value, now);
+            music.master.gain.linearRampToValueAtTime(level, now + seconds);
+        }
+
+        // Lower the music while a number is being spoken
+        function duckMusic(isSpeaking) {
+            if (music.playing) fadeMusicTo(isSpeaking ? MUSIC_VOLUME * 0.3 : MUSIC_VOLUME, 0.4);
+        }
+
+        function toggleMusic() {
+            if (!music.ctx && !initMusic()) {
+                showToast("Sorry, your browser can't play the background music.");
+                return;
+            }
+
+            const btn = document.getElementById('music-btn');
+
+            if (music.playing) {
+                music.playing = false;
+                clearInterval(music.timer);
+                fadeMusicTo(0, 0.8);
+                setTimeout(() => { if (!music.playing) music.ctx.suspend(); }, 1000);
+            } else {
+                music.playing = true;
+                music.ctx.resume();
+                music.nextChordTime = Math.max(music.nextChordTime, music.ctx.currentTime + 0.1);
+                musicTick();
+                music.timer = setInterval(musicTick, 1000);
+                fadeMusicTo(MUSIC_VOLUME, 2);
+            }
+
+            const label = music.playing ? 'Pause background music' : 'Play background music';
+            btn.classList.toggle('active', music.playing);
+            btn.setAttribute('aria-pressed', music.playing);
+            btn.title = label;
+            btn.setAttribute('aria-label', label);
         }
 
         /* ===================================================
            NATIVE WEB SPEECH AUDIO SYNTHESIS
            =================================================== */
-        const speechSupported = 'speechSynthesis' in window;
         let warnedNoRussianVoice = false;
 
-        function getRussianVoice() {
-            const voices = window.speechSynthesis.getVoices();
-            return voices.find(v => v.lang.replace('_', '-').toLowerCase() === 'ru-ru')
-                || voices.find(v => v.lang.toLowerCase().startsWith('ru'));
-        }
-
         function speakText(text) {
-            if (!text) return;
-            if (!speechSupported) {
-                showToast("Sorry, your browser doesn't support audio pronunciation.");
+            if (!('speechSynthesis' in window)) {
+                showToast("Sorry, your browser doesn't support Web Speech API");
                 return;
             }
 
@@ -1502,29 +1734,33 @@
             utterance.lang = 'ru-RU';
             utterance.rate = currentSpeechSpeed;
 
-            const ruVoice = getRussianVoice();
+            // Try to set Russian voice if available
+            const voices = window.speechSynthesis.getVoices();
+            const ruVoice = voices.find(v => v.lang.toLowerCase().startsWith('ru'));
             if (ruVoice) {
                 utterance.voice = ruVoice;
-            } else if (window.speechSynthesis.getVoices().length > 0 && !warnedNoRussianVoice) {
+            } else if (voices.length > 0 && !warnedNoRussianVoice) {
                 warnedNoRussianVoice = true;
-                showToast("No Russian voice found on this device, so the pronunciation may sound wrong. Install a Russian voice in your system settings.");
+                showToast("No Russian voice found on this device, so the pronunciation may sound wrong.");
             }
+
+            utterance.onstart = () => duckMusic(true);
+            utterance.onend = () => duckMusic(false);
+            utterance.onerror = () => duckMusic(false);
 
             window.speechSynthesis.speak(utterance);
         }
 
         function speakCurrentNumber() {
-            const digits = document.getElementById('num-input').value;
-            if (digits === '') return;
-            speakText(convertToRussian(parseInt(digits, 10)).cyrillic);
+            const val = document.getElementById('num-input').value;
+            if (val === '') return;
+            speakText(convertToRussian(val).cyrillic);
         }
 
         function setSpeechSpeed(speed, btn) {
             currentSpeechSpeed = speed;
-            document.querySelectorAll('.speed-btn').forEach(b => {
-                b.classList.toggle('active', b === btn);
-                b.setAttribute('aria-pressed', b === btn);
-            });
+            document.querySelectorAll('.speed-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
         }
 
         /* ===================================================
@@ -1556,7 +1792,6 @@
             const fc = document.getElementById('flashcard');
             const wasFlipped = fc.classList.contains('flipped');
             fc.classList.remove('flipped');
-            if (speechSupported) window.speechSynthesis.cancel();
 
             const num = currentDeck[cardIndex];
             const res = convertToRussian(num);
@@ -1607,22 +1842,6 @@
             }
         }
 
-        function initFlashcardKeys() {
-            document.getElementById('flashcard-container').addEventListener('keydown', e => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    flipFlashcard();
-                }
-            });
-
-            document.addEventListener('keydown', e => {
-                if (!document.getElementById('cards-view').classList.contains('active')) return;
-                if (e.target.tagName === 'SELECT' || e.target.tagName === 'INPUT') return;
-                if (e.key === 'ArrowRight') nextFlashcard();
-                if (e.key === 'ArrowLeft') prevFlashcard();
-            });
-        }
-
         /* ===================================================
            QUIZ CHALLENGE MODULE
            =================================================== */
@@ -1630,25 +1849,11 @@
         let quizStreak = 0;
         let currentQuizCorrect = 0;
 
-        function shuffle(arr) {
-            for (let i = arr.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [arr[i], arr[j]] = [arr[j], arr[i]];
-            }
-            return arr;
-        }
-
         function generateQuizQuestion() {
             const target = Math.floor(Math.random() * 500) + 1;
             currentQuizCorrect = target;
 
             document.getElementById('quiz-target-number').innerText = target;
-
-            const feedback = document.getElementById('quiz-feedback');
-            feedback.innerText = '';
-            feedback.className = 'quiz-feedback';
-            document.getElementById('quiz-next-label').innerText = 'Skip Question';
-            document.getElementById('quiz-next').classList.remove('primary');
 
             // Generate options
             let options = [target];
@@ -1659,7 +1864,11 @@
                 }
             }
 
-            shuffle(options);
+            // Shuffle options
+            for (let i = options.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [options[i], options[j]] = [options[j], options[i]];
+            }
 
             const grid = document.getElementById('options-grid');
             grid.innerHTML = '';
@@ -1679,15 +1888,10 @@
             const allBtns = document.querySelectorAll('.option-btn');
             allBtns.forEach(b => b.disabled = true);
 
-            const feedback = document.getElementById('quiz-feedback');
-            const correctWord = convertToRussian(currentQuizCorrect).cyrillic;
-
             if (selected === currentQuizCorrect) {
                 btn.classList.add('correct');
                 quizScore += 10;
                 quizStreak += 1;
-                feedback.innerText = 'Правильно! Correct.';
-                feedback.className = 'quiz-feedback correct';
                 speakText("Правильно"); // "Correct" in Russian
             } else {
                 btn.classList.add('wrong');
@@ -1698,15 +1902,10 @@
                         b.classList.add('correct');
                     }
                 });
-                feedback.innerText = `Not quite. ${currentQuizCorrect} is "${correctWord}".`;
-                feedback.className = 'quiz-feedback wrong';
-                speakText(correctWord);
             }
 
             document.getElementById('quiz-score').innerText = quizScore;
             document.getElementById('quiz-streak').innerText = quizStreak;
-            document.getElementById('quiz-next-label').innerText = 'Next Question';
-            document.getElementById('quiz-next').classList.add('primary');
         }
 
         /* ===================================================
@@ -1716,46 +1915,22 @@
             const tbody = document.getElementById('chart-tbody');
             tbody.innerHTML = '';
 
-            const range = (from, to, step) => {
-                const list = [];
-                for (let i = from; i <= to; i += step) list.push(i);
-                return list;
-            };
+            const list = [0,1,2,3,4,5,6,7,8,9,10,11,12,15,20,30,50,100,154,500,1000];
 
-            const groups = [
-                { title: 'Basics (0 - 10)', list: range(0, 10, 1) },
-                { title: 'Teens (11 - 19)', list: range(11, 19, 1) },
-                { title: 'Tens (20 - 90)', list: range(20, 90, 10) },
-                { title: 'Hundreds (100 - 900)', list: range(100, 900, 100) },
-                { title: 'Thousands', list: [1000, 2000, 5000] }
-            ];
-
-            groups.forEach(group => {
-                const head = document.createElement('tr');
-                head.className = 'chart-group';
-                head.innerHTML = `<td colspan="4">${group.title}</td>`;
-                tbody.appendChild(head);
-
-                group.list.forEach(num => {
-                    const res = convertToRussian(num);
-                    const tr = document.createElement('tr');
-                    tr.innerHTML = `
-                        <td>${formatNumber(num)}</td>
-                        <td class="chart-cyrillic"><span lang="ru">${res.cyrillic}</span><span class="chart-phonetic chart-phonetic-inline" aria-hidden="true">${res.phonetic}</span></td>
-                        <td class="chart-phonetic">${res.phonetic}</td>
-                        <td>
-                            <button class="action-btn small" data-speak="${res.cyrillic}" aria-label="Play ${num}">
-                                <i class="fa-solid fa-volume-high" aria-hidden="true"></i> <span class="chart-play-label">Play</span>
-                            </button>
-                        </td>
-                    `;
-                    tbody.appendChild(tr);
-                });
-            });
-
-            tbody.addEventListener('click', e => {
-                const btn = e.target.closest('[data-speak]');
-                if (btn) speakText(btn.dataset.speak);
+            list.forEach(num => {
+                const res = convertToRussian(num);
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td>${num}</td>
+                    <td class="chart-cyrillic">${res.cyrillic}<span class="chart-phonetic chart-phonetic-inline">${res.phonetic}</span></td>
+                    <td class="chart-phonetic">${res.phonetic}</td>
+                    <td>
+                        <button class="action-btn" style="padding: 6px 14px; font-size: 0.8rem;" onclick="speakText('${res.cyrillic}')" aria-label="Play ${num}">
+                            <i class="fa-solid fa-volume-high"></i> <span class="chart-play-label">Play</span>
+                        </button>
+                    </td>
+                `;
+                tbody.appendChild(tr);
             });
         }
 
@@ -1765,19 +1940,19 @@
         function initCanvas() {
             const canvas = document.getElementById('bg-canvas');
             const ctx = canvas.getContext('2d');
-            const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
             function resize() {
                 canvas.width = window.innerWidth;
                 canvas.height = window.innerHeight;
-                if (reduceMotion) draw();
             }
+            window.addEventListener('resize', resize);
+            resize();
 
             const particles = [];
             for (let i = 0; i < 45; i++) {
                 particles.push({
-                    x: Math.random() * window.innerWidth,
-                    y: Math.random() * window.innerHeight,
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
                     radius: Math.random() * 2 + 1,
                     vx: (Math.random() - 0.5) * 0.5,
                     vy: (Math.random() - 0.5) * 0.5,
@@ -1785,20 +1960,10 @@
                 });
             }
 
-            function draw() {
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-                particles.forEach(p => {
-                    ctx.beginPath();
-                    ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-                    ctx.fillStyle = `rgba(168, 85, 247, ${p.alpha})`;
-                    ctx.shadowBlur = 10;
-                    ctx.shadowColor = '#6366f1';
-                    ctx.fill();
-                });
-            }
-
             function animate() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                const light = isLightTheme();
+
                 particles.forEach(p => {
                     p.x += p.vx;
                     p.y += p.vy;
@@ -1807,28 +1972,29 @@
                     if (p.x > canvas.width) p.x = 0;
                     if (p.y < 0) p.y = canvas.height;
                     if (p.y > canvas.height) p.y = 0;
+
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+                    ctx.fillStyle = light ? `rgba(99, 102, 241, ${p.alpha * 0.7})` : `rgba(168, 85, 247, ${p.alpha})`;
+                    ctx.shadowBlur = light ? 4 : 10;
+                    ctx.shadowColor = '#6366f1';
+                    ctx.fill();
                 });
 
-                draw();
                 requestAnimationFrame(animate);
             }
-
-            window.addEventListener('resize', resize);
-            resize();
-            if (!reduceMotion) animate();
+            animate();
         }
 
         // Initialize on Load
-        window.addEventListener('DOMContentLoaded', () => {
+        window.onload = () => {
             initCanvas();
-            handleSearch(); // Initial calculation for 154
+            updateThemeButton();
+            handleSearch(); // Starts empty until a number is typed
             loadCategoryCards();
-            initFlashcardKeys();
             generateQuizQuestion();
             populateChart();
-            // Voices load asynchronously in some browsers
-            if (speechSupported) window.speechSynthesis.getVoices();
-        });
+        };
     </script>
 </body>
 </html>
